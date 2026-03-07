@@ -3,12 +3,12 @@ import { useRef } from "react";
 import { Brain, Shield, Smartphone, Cloud, Cpu, BarChart } from "lucide-react";
 
 const techItems = [
-  { icon: Brain, title: "AI-Powered", desc: "Machine learning for demand forecasting, inventory optimization, and customer insights" },
-  { icon: Shield, title: "Enterprise Security", desc: "PCI-DSS compliant payment processing with end-to-end encryption" },
-  { icon: Smartphone, title: "Mobile-First", desc: "Progressive web apps that work on any device without downloads" },
-  { icon: Cloud, title: "Cloud-Native", desc: "Scalable infrastructure that grows with your business automatically" },
-  { icon: Cpu, title: "Edge Computing", desc: "Real-time processing at the edge for instant checkout experiences" },
-  { icon: BarChart, title: "Real-Time Analytics", desc: "Live dashboards with actionable insights on every transaction" },
+  { icon: Brain, title: "AI-Powered", desc: "Machine learning for demand forecasting and customer insights" },
+  { icon: Shield, title: "Enterprise Security", desc: "PCI-DSS compliant with end-to-end encryption" },
+  { icon: Smartphone, title: "Mobile-First", desc: "Progressive web apps on any device without downloads" },
+  { icon: Cloud, title: "Cloud-Native", desc: "Scalable infrastructure that grows automatically" },
+  { icon: Cpu, title: "Edge Computing", desc: "Real-time processing for instant checkout experiences" },
+  { icon: BarChart, title: "Real-Time Analytics", desc: "Live dashboards with actionable insights" },
 ];
 
 const TechStack = () => {
@@ -16,7 +16,7 @@ const TechStack = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 lg:py-32" ref={ref}>
+    <section className="py-24 lg:py-32 page-section" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -24,16 +24,15 @@ const TechStack = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <p className="text-primary font-medium mb-4 font-heading">Technology</p>
+          <span className="inline-block px-4 py-1.5 rounded-full border border-border bg-secondary text-sm text-muted-foreground mb-6">
+            Technology
+          </span>
           <h2 className="text-4xl lg:text-5xl font-bold font-heading mb-6">
-            Powered by <span className="gradient-text">Cutting-Edge Tech</span>
+            Powered by Cutting-Edge Tech
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Our platform leverages the latest in AI, cloud computing, and mobile technology to deliver unmatched retail experiences.
-          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {techItems.map((item, i) => (
             <motion.div
               key={item.title}

@@ -14,7 +14,7 @@ const HowItWorks = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 lg:py-32 relative" ref={ref}>
+    <section className="py-24 lg:py-32 page-section" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -22,14 +22,15 @@ const HowItWorks = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <p className="text-primary font-medium mb-4 font-heading">How It Works</p>
+          <span className="inline-block px-4 py-1.5 rounded-full border border-border bg-secondary text-sm text-muted-foreground mb-6">
+            How It Works
+          </span>
           <h2 className="text-4xl lg:text-5xl font-bold font-heading">
-            Four Steps to <span className="gradient-text">Freedom</span>
+            Four Steps to Freedom
           </h2>
         </motion.div>
 
         <div className="grid md:grid-cols-4 gap-8 relative">
-          {/* Connecting line */}
           <div className="hidden md:block absolute top-16 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0" />
 
           {steps.map((s, i) => (
@@ -40,8 +41,8 @@ const HowItWorks = () => {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="text-center relative"
             >
-              <div className="w-16 h-16 mx-auto rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 relative z-10">
-                <s.icon className="w-7 h-7 text-primary" />
+              <div className="w-14 h-14 mx-auto rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 relative z-10">
+                <s.icon className="w-6 h-6 text-primary" />
               </div>
               <span className="text-xs font-heading font-bold text-primary/50 uppercase tracking-widest">{s.step}</span>
               <h3 className="font-heading font-bold text-xl mt-2 mb-2">{s.title}</h3>
