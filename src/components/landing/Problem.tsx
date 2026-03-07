@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Clock, ShoppingCart, Frown, TrendingDown } from "lucide-react";
 
@@ -15,26 +14,26 @@ const Problem = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 lg:py-32 relative" ref={ref}>
+    <section className="py-24 lg:py-32 page-section" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mb-16"
+          className="text-center max-w-3xl mx-auto mb-16"
         >
-          <p className="text-primary font-medium mb-4 font-heading">The Problem</p>
-          <h2 className="text-4xl lg:text-5xl font-bold font-heading mb-6 text-balance">
-            Retail Still Runs on{" "}
-            <span className="gradient-text">Queues</span>
+          <span className="inline-block px-4 py-1.5 rounded-full border border-border bg-secondary text-sm text-muted-foreground mb-6">
+            The Problem
+          </span>
+          <h2 className="text-4xl lg:text-5xl font-bold font-heading mb-6">
+            Retail Still Runs on Queues
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             In a world where money moves in seconds, customers still spend minutes waiting in checkout lines.
-            Retail may be going digital — but checkout infrastructure hasn't caught up. <strong className="text-foreground">Until now.</strong>
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {painPoints.map((point, i) => (
             <motion.div
               key={point.label}
@@ -43,8 +42,8 @@ const Problem = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="glass-card p-6 group hover:border-primary/30 transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-lg bg-destructive/10 flex items-center justify-center mb-4 group-hover:bg-destructive/20 transition-colors">
-                <point.icon className="w-6 h-6 text-destructive" />
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                <point.icon className="w-5 h-5 text-primary" />
               </div>
               <h3 className="font-heading font-semibold text-lg mb-2">{point.label}</h3>
               <p className="text-sm text-muted-foreground">{point.desc}</p>

@@ -7,26 +7,26 @@ const Solution = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 lg:py-32 relative" ref={ref}>
-      <div className="absolute inset-0 glow-bg opacity-30 pointer-events-none" />
-      <div className="section-container relative">
+    <section className="py-24 lg:py-32 page-section" ref={ref}>
+      <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center"
+          className="text-center max-w-3xl mx-auto mb-12"
         >
-          <p className="text-primary font-medium mb-4 font-heading">The Dequeue Solution</p>
+          <span className="inline-block px-4 py-1.5 rounded-full border border-border bg-secondary text-sm text-muted-foreground mb-6">
+            Our Solution
+          </span>
           <h2 className="text-4xl lg:text-5xl font-bold font-heading mb-6">
-            Commerce <span className="gradient-text">Without Waiting</span>
+            Commerce Without Waiting
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-12">
-            Dequeue is building the infrastructure layer for queue-free retail. Our technology suite enables retailers
-            and restaurants to eliminate waiting lines, streamline payments, and create seamless customer journeys.
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Our technology suite enables retailers and restaurants to eliminate waiting lines, streamline payments, and create seamless customer journeys.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {[
             {
               icon: Zap,
@@ -41,19 +41,16 @@ const Solution = () => {
           ].map((item, i) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, x: i === 0 ? -30 : 30 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
               className="glass-card p-8 group hover:border-primary/30 transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <item.icon className="w-6 h-6 text-primary" />
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <item.icon className="w-5 h-5 text-primary" />
               </div>
               <h3 className="font-heading font-semibold text-xl mb-3">{item.title}</h3>
-              <p className="text-muted-foreground">{item.desc}</p>
-              <div className="mt-4 flex items-center text-primary text-sm font-medium group-hover:gap-2 transition-all">
-                Learn more <ArrowRight className="w-4 h-4 ml-1" />
-              </div>
+              <p className="text-muted-foreground text-sm">{item.desc}</p>
             </motion.div>
           ))}
         </div>
