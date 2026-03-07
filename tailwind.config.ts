@@ -8,9 +8,7 @@ export default {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+      screens: { "2xl": "1400px" },
     },
     extend: {
       fontFamily: {
@@ -84,26 +82,12 @@ export default {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
-        "slide-in-left": {
-          "0%": { opacity: "0", transform: "translateX(-40px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        "slide-in-right": {
-          "0%": { opacity: "0", transform: "translateX(40px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        "counter": {
-          "0%": { "--num": "0" } as any,
-          "100%": { "--num": "100" } as any,
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.6s ease-out forwards",
         "fade-in": "fade-in 0.6s ease-out forwards",
-        "slide-in-left": "slide-in-left 0.6s ease-out forwards",
-        "slide-in-right": "slide-in-right 0.6s ease-out forwards",
       },
     },
   },
