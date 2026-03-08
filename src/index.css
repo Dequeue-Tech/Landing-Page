@@ -157,8 +157,74 @@
     @apply border-b border-border/30;
   }
 
-  .text-balance {
-    text-wrap: balance;
+  /* Section background patterns for visual differentiation */
+  .section-bg-dots {
+    background-image: radial-gradient(circle, hsl(var(--primary) / 0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .section-bg-gradient-down {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--background)),
+      hsl(var(--primary) / 0.03) 50%,
+      hsl(var(--background))
+    );
+  }
+
+  .section-bg-gradient-radial {
+    background: radial-gradient(
+      ellipse at 50% 0%,
+      hsl(var(--primary) / 0.06) 0%,
+      transparent 60%
+    );
+  }
+
+  .section-bg-mesh {
+    background:
+      linear-gradient(135deg, hsl(var(--primary) / 0.04) 0%, transparent 50%),
+      linear-gradient(225deg, hsl(var(--accent) / 0.03) 0%, transparent 50%);
+  }
+
+  .section-bg-subtle {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--card)),
+      hsl(var(--background)) 30%,
+      hsl(var(--background)) 70%,
+      hsl(var(--card))
+    );
+  }
+
+  .section-bg-glow-top {
+    background: radial-gradient(
+      ellipse at 30% 0%,
+      hsl(var(--primary) / 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 70% 100%,
+      hsl(var(--primary) / 0.03) 0%,
+      transparent 50%
+    );
+  }
+
+  .section-bg-diagonal {
+    background:
+      linear-gradient(
+        160deg,
+        hsl(var(--card)) 0%,
+        hsl(var(--background)) 30%,
+        hsl(var(--background)) 70%,
+        hsl(var(--card)) 100%
+      );
+  }
+
+  .section-bg-grid {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.15) 1px, transparent 1px);
+    background-size: 60px 60px;
   }
 
   /* Liquid Glass Effects - Light */
