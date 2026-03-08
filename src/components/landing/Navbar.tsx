@@ -65,7 +65,7 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <div className="md:hidden flex items-center gap-2">
-          <ThemeToggle />
+          
           <button className="text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
