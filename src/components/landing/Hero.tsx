@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import type { Transition, Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-retail.jpg";
 
