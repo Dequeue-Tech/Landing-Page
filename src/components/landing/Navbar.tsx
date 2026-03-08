@@ -58,7 +58,6 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
-          <ThemeToggle />
           <Button variant="hero" size="sm" asChild>
             <Link to="/contact">Book a call</Link>
           </Button>
