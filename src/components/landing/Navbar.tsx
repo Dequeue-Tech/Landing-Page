@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import logo from "@/assets/dequeue-logo.png";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -37,9 +38,7 @@ const Navbar = () => {
     >
       <div className="section-container flex items-center justify-between h-16 lg:h-20">
         <Link to="/" className="font-heading text-xl font-bold text-foreground flex items-center gap-2">
-          <div className="w-7 h-7 rounded bg-primary/20 border border-primary/40 flex items-center justify-center">
-            <span className="text-primary text-sm font-bold">D</span>
-          </div>
+          <img src={logo} alt="Dequeue" className="w-8 h-8 object-contain" />
           Dequeue
         </Link>
 

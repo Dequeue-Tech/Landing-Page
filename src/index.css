@@ -6,54 +6,54 @@
 
 @layer base {
   :root {
-    --background: 0 0% 2%;
-    --foreground: 0 0% 95%;
+    --background: 220 20% 2%;
+    --foreground: 210 20% 95%;
 
-    --card: 0 0% 6%;
-    --card-foreground: 0 0% 95%;
+    --card: 220 20% 6%;
+    --card-foreground: 210 20% 95%;
 
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 220 20% 6%;
+    --popover-foreground: 210 20% 95%;
 
-    --primary: 262 83% 58%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 80%;
+    --secondary: 220 15% 10%;
+    --secondary-foreground: 210 15% 80%;
 
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 55%;
+    --muted: 220 15% 10%;
+    --muted-foreground: 210 10% 55%;
 
-    --accent: 262 83% 58%;
+    --accent: 217 91% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 262 83% 58%;
+    --border: 220 15% 14%;
+    --input: 220 15% 14%;
+    --ring: 217 91% 60%;
 
     --radius: 0.75rem;
 
-    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(280 80% 65%));
-    --gradient-glow: radial-gradient(ellipse at center, hsl(262 83% 58% / 0.25), transparent 60%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 8%), hsl(0 0% 4%));
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(199 89% 48%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(217 91% 60% / 0.25), transparent 60%);
+    --gradient-card: linear-gradient(145deg, hsl(220 20% 8%), hsl(220 20% 4%));
 
-    --shadow-glow: 0 0 60px hsl(262 83% 58% / 0.2);
+    --shadow-glow: 0 0 60px hsl(217 91% 60% / 0.2);
     --shadow-card: 0 4px 30px hsl(0 0% 0% / 0.5);
 
-    --sparkles-color: 262 83% 58%;
-    --gradient-color: 262 83% 58%;
+    --sparkles-color: 217 91% 60%;
+    --gradient-color: 217 91% 60%;
 
-    --sidebar-background: 0 0% 4%;
-    --sidebar-foreground: 0 0% 80%;
-    --sidebar-primary: 262 83% 58%;
+    --sidebar-background: 220 20% 4%;
+    --sidebar-foreground: 210 15% 80%;
+    --sidebar-primary: 217 91% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 10%;
-    --sidebar-accent-foreground: 0 0% 80%;
-    --sidebar-border: 0 0% 14%;
-    --sidebar-ring: 262 83% 58%;
+    --sidebar-accent: 220 15% 10%;
+    --sidebar-accent-foreground: 210 15% 80%;
+    --sidebar-border: 220 15% 14%;
+    --sidebar-ring: 217 91% 60%;
 
     --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -134,9 +134,9 @@
     @apply absolute inset-0 rounded-2xl pointer-events-none;
     background: linear-gradient(
       135deg,
-      hsl(262 83% 58% / 0.05),
+      hsl(217 91% 60% / 0.05),
       transparent 50%,
-      hsl(280 80% 65% / 0.03)
+      hsl(199 89% 48% / 0.03)
     );
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -147,9 +147,9 @@
   }
 
   .liquid-glass-card:hover {
-    border-color: hsl(262 83% 58% / 0.2);
+    border-color: hsl(217 91% 60% / 0.2);
     box-shadow:
-      0 12px 48px hsl(262 83% 58% / 0.1),
+      0 12px 48px hsl(217 91% 60% / 0.1),
       0 8px 32px hsl(0 0% 0% / 0.4),
       inset 0 1px 0 hsl(0 0% 100% / 0.08),
       inset 0 -1px 0 hsl(0 0% 0% / 0.2);
@@ -159,21 +159,21 @@
   .liquid-glass-icon {
     background: linear-gradient(
       135deg,
-      hsl(262 83% 58% / 0.15),
-      hsl(280 80% 65% / 0.05)
+      hsl(217 91% 60% / 0.15),
+      hsl(199 89% 48% / 0.05)
     );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow:
-      0 4px 16px hsl(262 83% 58% / 0.1),
+      0 4px 16px hsl(217 91% 60% / 0.1),
       inset 0 1px 0 hsl(0 0% 100% / 0.1);
   }
 
   .liquid-glass-nav {
     background: linear-gradient(
       180deg,
-      hsl(0 0% 2% / 0.7),
-      hsl(0 0% 2% / 0.5)
+      hsl(220 20% 2% / 0.7),
+      hsl(220 20% 2% / 0.5)
     );
     backdrop-filter: blur(24px) saturate(1.8);
     -webkit-backdrop-filter: blur(24px) saturate(1.8);
@@ -196,8 +196,8 @@
   }
 
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px hsl(262 83% 58% / 0.1); }
-    50% { box-shadow: 0 0 50px hsl(262 83% 58% / 0.3); }
+    0%, 100% { box-shadow: 0 0 20px hsl(217 91% 60% / 0.1); }
+    50% { box-shadow: 0 0 50px hsl(217 91% 60% / 0.3); }
   }
 
   .animate-shimmer {

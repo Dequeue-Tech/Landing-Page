@@ -1,5 +1,6 @@
 import { Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "@/assets/dequeue-logo.png";
 
 const Footer = () => (
   <footer className="border-t border-border/50 py-12">
@@ -7,9 +8,7 @@ const Footer = () => (
       <div className="grid md:grid-cols-4 gap-8 mb-10">
         <div className="md:col-span-1">
           <Link to="/" className="font-heading text-xl font-bold text-foreground flex items-center gap-2">
-            <div className="w-7 h-7 rounded bg-primary/20 border border-primary/40 flex items-center justify-center">
-              <span className="text-primary text-sm font-bold">D</span>
-            </div>
+            <img src={logo} alt="Dequeue" className="w-8 h-8 object-contain" />
             Dequeue
           </Link>
           <p className="text-sm text-muted-foreground mt-3">
@@ -30,18 +29,18 @@ const Footer = () => (
         <div>
           <h4 className="font-heading font-semibold mb-4 text-sm uppercase tracking-wider text-muted-foreground">Products</h4>
           <ul className="space-y-2">
-            <li><Link to="/products#go" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Go</Link></li>
-            <li><Link to="/products#bite" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Bite</Link></li>
-            <li><Link to="/products#swift" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Swift</Link></li>
-            <li><Link to="/products#hermit" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Hermit</Link></li>
+            <li><Link to="/products/go" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Go</Link></li>
+            <li><Link to="/products/bite" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Bite</Link></li>
+            <li><Link to="/products/swift" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Swift</Link></li>
+            <li><Link to="/products/hermit" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Hermit</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="font-heading font-semibold mb-4 text-sm uppercase tracking-wider text-muted-foreground">Legal</h4>
           <ul className="space-y-2">
-            <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Terms & Conditions</a></li>
-            <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</a></li>
+            <li><Link to="/terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Terms & Conditions</Link></li>
+            <li><Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</Link></li>
           </ul>
           <div className="mt-6">
             <a
