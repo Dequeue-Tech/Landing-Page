@@ -75,7 +75,7 @@ const ProductsOverview = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <Link
-                to={`/products#${p.id}`}
+                to={`/products/${p.id}`}
                 className="glass-card overflow-hidden group hover:border-primary/30 transition-all duration-300 block"
               >
                 <div className="relative h-48 overflow-hidden">
