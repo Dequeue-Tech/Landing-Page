@@ -56,9 +56,10 @@ const SwiftPage = () => {
               <h1 className="text-5xl lg:text-7xl font-bold font-heading mb-6 leading-[1.05]">
                 The Smart Cart That <span className="gradient-text">Ends Checkout.</span>
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-lg">
-                Swift is a modular smart cart system that synchronizes with a customer's smartphone for real-time checkout. Place products, track purchases, pay without visiting a counter.
+              <p className="text-lg text-muted-foreground leading-relaxed mb-4 max-w-lg">
+                Swift is a modular smart cart system that synchronizes with a customer's smartphone for real-time checkout. Place products, track purchases, pay without visiting a counter. Fully customizable.
               </p>
+              <p className="text-sm text-primary font-heading font-semibold mb-8">Queue less. Live more. #Dequeue</p>
               <div className="flex flex-wrap gap-4">
                 <Button variant="hero" size="lg" asChild><Link to="/contact">Request Demo <ArrowRight className="ml-1 w-4 h-4" /></Link></Button>
                 <Button variant="heroOutline" size="lg" asChild><Link to="/pricing">View Pricing</Link></Button>

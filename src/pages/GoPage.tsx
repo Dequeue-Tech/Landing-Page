@@ -69,9 +69,10 @@ const GoPage = () => {
               <h1 className="text-5xl lg:text-7xl font-bold font-heading mb-6 leading-[1.05]">
                 Mobile Checkout. <span className="gradient-text">No Lines.</span>
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-lg">
-                Go is a software-only retail checkout system that turns any smartphone into a checkout terminal. Customers simply scan products, pay instantly, and walk out.
+              <p className="text-lg text-muted-foreground leading-relaxed mb-4 max-w-lg">
+                Go is a software-only retail checkout system that turns any smartphone into a checkout terminal. Customers simply scan products, pay instantly, and walk out. Fully customizable to your brand.
               </p>
+              <p className="text-sm text-primary font-heading font-semibold mb-8">Skip the queue. #Dequeue</p>
               <div className="flex flex-wrap gap-4">
                 <Button variant="hero" size="lg" asChild><Link to="/contact">Request Demo <ArrowRight className="ml-1 w-4 h-4" /></Link></Button>
                 <Button variant="heroOutline" size="lg" asChild><Link to="/pricing">View Pricing</Link></Button>

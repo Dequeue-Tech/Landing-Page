@@ -15,9 +15,10 @@ const BlogPage = () => (
             Blog
           </span>
           <h1 className="text-4xl lg:text-6xl font-bold font-heading mb-6">Latest Insights</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
             Explore our thoughts on queue-free retail, AI automation, and the future of commerce.
           </p>
+          <p className="text-sm text-primary font-heading font-semibold">Life's too short for queues. #Dequeue</p>
         </motion.div>
       </div>
     </section>

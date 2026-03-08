@@ -32,9 +32,10 @@ const ProductsPage = () => {
             <h1 className="text-4xl lg:text-6xl font-bold font-heading mb-6">
               One Platform. Four Powerful Products.
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              An integrated ecosystem of retail technologies designed to remove friction from every step of the shopping experience.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
+              An integrated ecosystem of retail technologies designed to remove friction from every step of the shopping experience. Every product is fully customizable.
             </p>
+            <p className="text-sm text-primary font-heading font-semibold">No queues. Just #Dequeue.</p>
           </motion.div>
         </div>
       </section>

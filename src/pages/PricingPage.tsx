@@ -18,9 +18,10 @@ const PricingPage = () => (
           <h1 className="text-4xl lg:text-6xl font-bold font-heading mb-6">
             Simple, Transparent Pricing
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
             Choose the plan that fits your business. No hidden fees. Cancel anytime.
           </p>
+          <p className="text-sm text-primary font-heading font-semibold">Queue less. Live more. #Dequeue</p>
         </motion.div>
       </div>
     </section>

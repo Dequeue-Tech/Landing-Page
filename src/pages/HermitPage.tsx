@@ -66,7 +66,8 @@ const HermitPage = () => {
               <p className="text-lg text-muted-foreground leading-relaxed mb-4 max-w-lg">
                 A fully autonomous, AI-powered dark store platform that manages the entire fulfillment process — from demand forecasting to picking, packing, and dispatch — without human intervention.
               </p>
-              <p className="text-base text-foreground/80 font-medium font-heading mb-8">Hermit doesn't just automate retail. It redefines it.</p>
+              <p className="text-base text-foreground/80 font-medium font-heading mb-4">Hermit doesn't just automate retail. It redefines it.</p>
+              <p className="text-sm text-primary font-heading font-semibold mb-8">Life's too short for queues. #Dequeue</p>
               <div className="flex flex-wrap gap-4">
                 <Button variant="hero" size="lg" asChild><Link to="/contact">Request Demo <ArrowRight className="ml-1 w-4 h-4" /></Link></Button>
                 <Button variant="heroOutline" size="lg" asChild><Link to="/pricing">View Pricing</Link></Button>

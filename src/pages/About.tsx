@@ -18,9 +18,10 @@ const About = () => (
             About Us
           </span>
           <h1 className="text-4xl lg:text-6xl font-bold font-heading mb-6">Helping Retailers Grow</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
             Dequeue helps businesses streamline operations and grow faster with AI-powered retail infrastructure.
           </p>
+          <p className="text-sm text-primary font-heading font-semibold">Why wait in queues? Just #Dequeue.</p>
         </motion.div>
       </div>
     </section>

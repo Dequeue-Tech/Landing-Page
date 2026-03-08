@@ -25,9 +25,12 @@ const Vision = () => {
             We are building a new infrastructure layer for global commerce — one where transactions are instant,
             operations are intelligent, and customers never have to wait.
           </p>
-          <p className="text-lg text-foreground font-medium font-heading">
+          <p className="text-lg text-foreground font-medium font-heading mb-3">
             The future of retail is seamless. And it starts with{" "}
             <span className="gradient-text">Dequeue</span>.
+          </p>
+          <p className="text-sm text-primary font-heading font-semibold">
+            Why wait in queues? Just #Dequeue.
           </p>
         </motion.div>
       </div>

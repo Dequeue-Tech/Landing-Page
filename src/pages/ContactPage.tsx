@@ -14,9 +14,10 @@ const ContactPage = () => (
             Contact
           </span>
           <h1 className="text-4xl lg:text-6xl font-bold font-heading mb-6">Get in Touch with Us</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
             Have questions or need queue-free solutions? Let us know by filling out the form, and we'll be in touch!
           </p>
+          <p className="text-sm text-primary font-heading font-semibold">Skip the queue. #Dequeue</p>
         </motion.div>
       </div>
     </section>
