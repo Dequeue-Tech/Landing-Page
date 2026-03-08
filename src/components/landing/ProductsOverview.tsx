@@ -56,7 +56,7 @@ const ProductsOverview = () => {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full border border-border bg-secondary text-sm text-muted-foreground mb-6">
-            Our Services
+            Our Products
           </span>
           <h2 className="text-4xl lg:text-5xl font-bold font-heading mb-6">
             AI Solutions That Transform Retail
@@ -76,7 +76,7 @@ const ProductsOverview = () => {
             >
               <Link
                 to={`/products/${p.id}`}
-                className="glass-card overflow-hidden group hover:border-primary/30 transition-all duration-300 block"
+                className="liquid-glass-card overflow-hidden group block"
               >
                 <div className="relative h-48 overflow-hidden">
                   <img
