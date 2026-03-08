@@ -26,11 +26,12 @@ const Hero = () => (
         </div>
 
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold font-heading leading-[1.05] mb-6 text-balance">
-          The End of Queues.
+          Why Wait in Queues?<br />
+          <span className="gradient-text">Just #Dequeue.</span>
         </h1>
 
         <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed">
-          Dequeue builds the infrastructure that eliminates checkout lines forever. Scan. Pay. Go.
+          Dequeue builds the infrastructure that eliminates checkout lines forever. Four customizable products. One mission. Scan. Pay. Go.
         </p>
 
         <div className="flex flex-wrap justify-center gap-4">
