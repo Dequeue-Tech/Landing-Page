@@ -73,6 +73,14 @@ const ProductCard = ({
               </ul>
             </div>
           </div>
+
+          <div className="mt-8">
+            <Button variant="hero" size="sm" asChild>
+              <Link to={`/products/${id}`}>
+                Learn more about {title} <ArrowRight className="ml-1 w-4 h-4" />
+              </Link>
+            </Button>
+          </div>
         </motion.div>
 
         <motion.div
