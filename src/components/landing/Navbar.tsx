@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import ThemeToggle from "@/components/ThemeToggle";
+
 import logo from "@/assets/dequeue-logo.png";
 
 const navLinks = [
@@ -58,7 +58,6 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
-          <ThemeToggle />
           <Button variant="hero" size="sm" asChild>
             <Link to="/contact">Book a call</Link>
           </Button>
@@ -66,7 +65,7 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <div className="md:hidden flex items-center gap-2">
-          <ThemeToggle />
+          
           <button className="text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
