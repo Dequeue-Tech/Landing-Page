@@ -21,8 +21,11 @@ const Solution = () => {
           <h2 className="text-4xl lg:text-5xl font-bold font-heading mb-6">
             Commerce Without Waiting
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Our technology suite enables retailers and restaurants to eliminate waiting lines, streamline payments, and create seamless customer journeys.
+          <p className="text-lg text-muted-foreground leading-relaxed mb-3">
+            Our ever-growing technology suite enables retailers and restaurants to eliminate waiting lines, streamline payments, and create seamless customer journeys — fully customizable to your business.
+          </p>
+          <p className="text-sm text-primary font-heading font-semibold">
+            Why wait in queues? Just #Dequeue.
           </p>
         </motion.div>
 

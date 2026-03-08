@@ -19,11 +19,15 @@ const CTASection = () => {
         >
           <div className="absolute inset-0 glow-bg opacity-40 pointer-events-none" />
           <div className="relative z-10">
+            <p className="text-lg text-primary font-heading font-bold mb-4">Skip the queue. #Dequeue</p>
             <h2 className="text-3xl lg:text-5xl font-bold font-heading mb-6">
               Ready to Eliminate Queues?
             </h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
-              Join the retailers and restaurants transforming their business with Dequeue's queue-free technology.
+            <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-4">
+              Join the retailers and restaurants transforming their business with Dequeue's queue-free, fully customizable technology suite — built to fit your needs.
+            </p>
+            <p className="text-sm text-muted-foreground italic mb-8">
+              4 products today. An ever-growing ecosystem tomorrow.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="hero" size="lg" asChild>

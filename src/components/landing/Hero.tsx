@@ -52,7 +52,7 @@ const Hero = () => (
         transition={{ delay: 0.6 }}
         className="mt-20 text-sm text-muted-foreground"
       >
-        Trusted by retailers and restaurants across India
+        Skip the queue. <span className="text-primary font-heading font-semibold">#Dequeue</span> — Trusted by retailers and restaurants across India
       </motion.p>
     </div>
   </section>

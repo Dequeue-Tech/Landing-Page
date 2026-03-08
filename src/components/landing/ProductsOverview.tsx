@@ -59,10 +59,13 @@ const ProductsOverview = () => {
             Our Products
           </span>
           <h2 className="text-4xl lg:text-5xl font-bold font-heading mb-6">
-            AI Solutions That Transform Retail
+            Four Products. Fully Customizable. Ever Growing.
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Four powerful products designed to remove friction from every step of the shopping experience.
+          <p className="text-lg text-muted-foreground mb-3">
+            Every product is ready to be tailored to your unique business needs — from branding to workflows. And our suite keeps expanding to serve every industry.
+          </p>
+          <p className="text-sm text-primary font-heading font-semibold">
+            Queue less. Live more. #Dequeue
           </p>
         </motion.div>
 
