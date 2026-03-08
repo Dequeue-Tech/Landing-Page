@@ -14,8 +14,7 @@ import { Button } from "@/components/ui/button";
 const plans = [
   {
     name: "Starter",
-    description:
-      "Perfect for small retailers looking to eliminate queues with mobile checkout.",
+    description: "Perfect for small retailers looking to eliminate queues with mobile checkout.",
     price: 499,
     yearlyPrice: 4999,
     buttonText: "Get started",
@@ -33,8 +32,7 @@ const plans = [
   },
   {
     name: "Business",
-    description:
-      "Best for growing retailers needing advanced features and multi-product access.",
+    description: "Best for growing retailers needing advanced features and multi-product access.",
     price: 1999,
     yearlyPrice: 19999,
     buttonText: "Get started",
@@ -53,8 +51,7 @@ const plans = [
   },
   {
     name: "Enterprise",
-    description:
-      "Full platform access with Swift, Hermit, and dedicated infrastructure for large retailers.",
+    description: "Full platform access with Swift, Hermit, and dedicated infrastructure for large retailers.",
     price: 4999,
     yearlyPrice: 49999,
     buttonText: "Contact sales",
@@ -72,11 +69,7 @@ const plans = [
   },
 ];
 
-const PricingSwitch = ({
-  onSwitch,
-}: {
-  onSwitch: (value: string) => void;
-}) => {
+const PricingSwitch = ({ onSwitch }: { onSwitch: (value: string) => void }) => {
   const [selected, setSelected] = useState("0");
 
   const handleSwitch = (value: string) => {
@@ -91,9 +84,7 @@ const PricingSwitch = ({
           onClick={() => handleSwitch("0")}
           className={cn(
             "relative z-10 w-fit h-10 rounded-full sm:px-6 px-3 sm:py-2 py-1 font-medium transition-colors text-sm",
-            selected === "0"
-              ? "text-primary-foreground"
-              : "text-muted-foreground"
+            selected === "0" ? "text-primary-foreground" : "text-muted-foreground"
           )}
         >
           {selected === "0" && (
@@ -109,9 +100,7 @@ const PricingSwitch = ({
           onClick={() => handleSwitch("1")}
           className={cn(
             "relative z-10 w-fit h-10 flex-shrink-0 rounded-full sm:px-6 px-3 sm:py-2 py-1 font-medium transition-colors text-sm",
-            selected === "1"
-              ? "text-primary-foreground"
-              : "text-muted-foreground"
+            selected === "1" ? "text-primary-foreground" : "text-muted-foreground"
           )}
         >
           {selected === "1" && (
@@ -136,20 +125,9 @@ export default function PricingSection() {
     setIsYearly(Number.parseInt(value) === 1);
 
   return (
-    <section
-      className="py-24 lg:py-32 relative overflow-hidden"
-      ref={pricingRef}
-    >
-      {/* Sparkles background */}
+    <section className="py-24 lg:py-32 relative overflow-hidden" ref={pricingRef}>
       <div className="absolute inset-0 pointer-events-none">
-        <Sparkles
-          className="w-full h-full"
-          density={100}
-          size={1.2}
-          speed={0.5}
-          color="hsl(262 83% 58%)"
-          opacity={0.3}
-        />
+        <Sparkles className="w-full h-full" density={100} size={1.2} speed={0.5} color="hsl(217 91% 60%)" opacity={0.3} />
       </div>
 
       <div className="section-container relative z-10">
@@ -170,8 +148,7 @@ export default function PricingSection() {
 
           <TimelineContent animationNum={2} timelineRef={pricingRef}>
             <p className="text-lg text-muted-foreground">
-              Trusted by retailers across India. Choose the plan that fits your
-              business needs.
+              Trusted by retailers across India. Choose the plan that fits your business needs.
             </p>
           </TimelineContent>
 
@@ -182,15 +159,11 @@ export default function PricingSection() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {plans.map((plan, index) => (
-            <TimelineContent
-              key={plan.name}
-              animationNum={index + 4}
-              timelineRef={pricingRef}
-            >
+            <TimelineContent key={plan.name} animationNum={index + 4} timelineRef={pricingRef}>
               <Card
                 className={cn(
                   "relative overflow-hidden liquid-glass-card h-full",
-                  plan.popular && "border-primary/50 shadow-[0_0_40px_hsl(262_83%_58%/0.15)]"
+                  plan.popular && "border-primary/50 shadow-[0_0_40px_hsl(217_91%_60%/0.15)]"
                 )}
               >
                 <CardHeader className="pb-4">
@@ -200,9 +173,7 @@ export default function PricingSection() {
                     </div>
                   )}
                   <div>
-                    <h3 className="text-xl font-heading font-bold">
-                      {plan.name}
-                    </h3>
+                    <h3 className="text-xl font-heading font-bold">{plan.name}</h3>
                   </div>
 
                   <div className="flex items-baseline gap-1 mt-4">
@@ -210,43 +181,28 @@ export default function PricingSection() {
                     <NumberFlow
                       value={isYearly ? plan.yearlyPrice : plan.price}
                       className="text-4xl font-bold font-heading"
-                      transformTiming={{
-                        duration: 500,
-                        easing: "ease-out",
-                      }}
+                      transformTiming={{ duration: 500, easing: "ease-out" }}
                     />
                     <span className="text-muted-foreground text-sm">
                       /{isYearly ? "year" : "month"}
                     </span>
                   </div>
 
-                  <p className="text-sm text-muted-foreground mt-3">
-                    {plan.description}
-                  </p>
+                  <p className="text-sm text-muted-foreground mt-3">{plan.description}</p>
                 </CardHeader>
 
                 <CardContent>
-                  <Button
-                    variant={plan.popular ? "hero" : "heroOutline"}
-                    className="w-full mb-6"
-                  >
+                  <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full mb-6">
                     {plan.buttonText}
                   </Button>
 
                   <div className="space-y-3">
-                    <p className="text-sm font-semibold text-foreground">
-                      {plan.includes[0]}
-                    </p>
+                    <p className="text-sm font-semibold text-foreground">{plan.includes[0]}</p>
                     <div className="space-y-2">
                       {plan.includes.slice(1).map((feature, featureIndex) => (
-                        <div
-                          key={featureIndex}
-                          className="flex items-center gap-2.5"
-                        >
+                        <div key={featureIndex} className="flex items-center gap-2.5">
                           <Check className="w-4 h-4 text-primary shrink-0" />
-                          <span className="text-sm text-muted-foreground">
-                            {feature}
-                          </span>
+                          <span className="text-sm text-muted-foreground">{feature}</span>
                         </div>
                       ))}
                     </div>
