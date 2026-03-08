@@ -27,9 +27,12 @@ const Partners = () => {
           <p className="text-sm text-muted-foreground uppercase tracking-widest font-heading font-semibold mb-2">
             Industries We Serve
           </p>
-          <h2 className="text-3xl lg:text-4xl font-bold font-heading">
+          <h2 className="text-3xl lg:text-4xl font-bold font-heading mb-3">
             Built for Every Retail Vertical
           </h2>
+          <p className="text-sm text-primary font-heading font-semibold">
+            No queues. Just #Dequeue.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-3 md:grid-cols-6 gap-6">

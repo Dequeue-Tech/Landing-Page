@@ -30,8 +30,11 @@ const WhyChoose = () => {
           <h2 className="text-4xl lg:text-5xl font-bold font-heading mb-6">
             Built for Modern Retail
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Retailers choose Dequeue because we remove friction from the shopping experience.
+          <p className="text-lg text-muted-foreground mb-3">
+            Retailers choose Dequeue because we remove friction from the shopping experience. Every product is customizable to fit your exact workflow.
+          </p>
+          <p className="text-sm text-primary font-heading font-semibold">
+            Life's too short for queues. #Dequeue
           </p>
         </motion.div>
 
