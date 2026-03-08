@@ -16,7 +16,7 @@ const Partners = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-20 page-section" ref={ref}>
+    <section className="py-20 page-section section-bg-subtle" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

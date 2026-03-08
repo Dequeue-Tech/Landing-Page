@@ -14,7 +14,7 @@ const HowItWorks = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 lg:py-32 page-section" ref={ref}>
+    <section className="py-24 lg:py-32 page-section section-bg-grid" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

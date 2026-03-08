@@ -125,7 +125,7 @@ export default function PricingSection() {
     setIsYearly(Number.parseInt(value) === 1);
 
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden" ref={pricingRef}>
+    <section className="py-24 lg:py-32 relative overflow-hidden section-bg-dots" ref={pricingRef}>
       <div className="absolute inset-0 pointer-events-none">
         <Sparkles className="w-full h-full" density={100} size={1.2} speed={0.5} color="hsl(217 91% 60%)" opacity={0.3} />
       </div>
