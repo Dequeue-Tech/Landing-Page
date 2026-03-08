@@ -5,6 +5,7 @@ import Solution from "@/components/landing/Solution";
 import HowItWorks from "@/components/landing/HowItWorks";
 import ProductsOverview from "@/components/landing/ProductsOverview";
 import Testimonials from "@/components/landing/Testimonials";
+import PricingSection from "@/components/ui/pricing-section";
 import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/landing/Footer";
 
@@ -17,6 +18,7 @@ const Index = () => (
     <HowItWorks />
     <ProductsOverview />
     <Testimonials />
+    <PricingSection />
     <CTASection />
     <Footer />
   </div>
