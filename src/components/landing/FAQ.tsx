@@ -34,9 +34,12 @@ const FAQ = () => {
           <span className="inline-block px-4 py-1.5 rounded-full border border-border bg-secondary text-sm text-muted-foreground mb-6">
             FAQ
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold font-heading">
+          <h2 className="text-4xl lg:text-5xl font-bold font-heading mb-3">
             Frequently Asked Questions
           </h2>
+          <p className="text-sm text-primary font-heading font-semibold">
+            No queues. Just #Dequeue.
+          </p>
         </motion.div>
 
         <motion.div
