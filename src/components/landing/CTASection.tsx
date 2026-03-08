@@ -9,7 +9,7 @@ const CTASection = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 lg:py-32" ref={ref}>
+    <section className="py-24 lg:py-32 section-bg-gradient-radial" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

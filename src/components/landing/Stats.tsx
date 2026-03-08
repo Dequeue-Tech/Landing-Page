@@ -15,7 +15,7 @@ const Stats = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 lg:py-32 page-section relative overflow-hidden" ref={ref}>
+    <section className="py-24 lg:py-32 page-section relative overflow-hidden section-bg-gradient-radial" ref={ref}>
       <div className="absolute inset-0 glow-bg opacity-20 pointer-events-none" />
       <div className="section-container relative">
         <motion.div
