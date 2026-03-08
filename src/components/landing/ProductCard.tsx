@@ -1,5 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, type ReactNode } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface ProductCardProps {
   id: string;
@@ -69,6 +72,14 @@ const ProductCard = ({
                 ))}
               </ul>
             </div>
+          </div>
+
+          <div className="mt-8">
+            <Button variant="hero" size="sm" asChild>
+              <Link to={`/products/${id}`}>
+                Learn more about {title} <ArrowRight className="ml-1 w-4 h-4" />
+              </Link>
+            </Button>
           </div>
         </motion.div>
 
