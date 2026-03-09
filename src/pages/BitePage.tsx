@@ -58,7 +58,7 @@ const BitePage = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
               <a
-                href="#info"
+                href="https://info.bite.dequeue.co.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-2.5 rounded-full border border-primary/30 bg-primary/10 hover:bg-primary/20 text-base text-primary font-semibold mb-6 transition-all cursor-pointer group"
