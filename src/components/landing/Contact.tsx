@@ -11,11 +11,44 @@ const Contact = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const { toast } = useToast();
   const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Form submitted!", description: "We'll get back to you within 24 hours." });
-    setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+    setIsSubmitting(true);
+    
+    try {
+      // Submit to FormSubmit
+      await fetch("https://formsubmit.co/ajax/info@dequeue.co.in", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          _subject: `New Contact Form Submission from ${formData.firstName} ${formData.lastName}`,
+          _template: "table",
+        }),
+      });
+      
+      toast({ 
+        title: "Message sent successfully!", 
+        description: "We'll get back to you within 24 hours." 
+      });
+      
+      setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      toast({ 
+        title: "Something went wrong", 
+        description: "Please try again or email us directly at info@dequeue.co.in" 
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -34,8 +67,8 @@ const Contact = () => {
             </div>
             <div>
               <p className="font-heading font-semibold text-sm mb-1">E-mail</p>
-              <a href="mailto:founders@dequeue.co.in" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                founders@dequeue.co.in
+              <a href="mailto:info@dequeue.co.in" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                info@dequeue.co.in
               </a>
             </div>
           </div>
@@ -121,8 +154,8 @@ const Contact = () => {
               className="bg-background border-border"
             />
           </div>
-          <Button variant="hero" size="lg" type="submit" className="w-full">
-            Submit Form
+          <Button variant="hero" size="lg" type="submit" className="w-full" disabled={isSubmitting}>
+            {isSubmitting ? "Sending..." : "Submit Form"}
           </Button>
         </motion.form>
       </div>

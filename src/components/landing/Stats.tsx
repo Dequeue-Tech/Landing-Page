@@ -2,12 +2,12 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const stats = [
-  { value: "500+", label: "Retail Locations" },
-  { value: "2M+", label: "Transactions Processed" },
-  { value: "80%", label: "Faster Checkouts" },
-  { value: "98%", label: "Customer Satisfaction" },
-  { value: "₹50Cr+", label: "Revenue Processed" },
-  { value: "15+", label: "Cities in India" },
+  { value: "< 2s", label: "Checkout Speed" },
+  { value: "0", label: "Hardware Terminals Needed" },
+  { value: "99.9%", label: "Target Uptime SLA" },
+  { value: "100%", label: "Contactless Processing" },
+  { value: "24/7", label: "Direct Developer Support" },
+  { value: "Real-Time", label: "Analytics & Insights" },
 ];
 
 const Stats = () => {
@@ -24,11 +24,11 @@ const Stats = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full border border-border bg-secondary text-sm text-muted-foreground mb-6">
+          {/* <span className="inline-block px-4 py-1.5 rounded-full border border-border bg-secondary text-sm text-muted-foreground mb-6">
             By the Numbers
-          </span>
+          </span> */}
           <h2 className="text-4xl lg:text-5xl font-bold font-heading">
-            Trusted Across India
+            Engineered for Modern Retail.
           </h2>
         </motion.div>
 

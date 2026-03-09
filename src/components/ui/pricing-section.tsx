@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const plans = [
   {
@@ -120,9 +121,14 @@ const PricingSwitch = ({ onSwitch }: { onSwitch: (value: string) => void }) => {
 export default function PricingSection() {
   const [isYearly, setIsYearly] = useState(false);
   const pricingRef = useRef<HTMLElement>(null);
+  const navigate = useNavigate();
 
   const togglePricingPeriod = (value: string) =>
     setIsYearly(Number.parseInt(value) === 1);
+
+  const handleGetStarted = () => {
+    navigate("/contact");
+  };
 
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden section-bg-dots" ref={pricingRef}>
@@ -139,7 +145,7 @@ export default function PricingSection() {
           </TimelineContent>
 
           <TimelineContent animationNum={1} timelineRef={pricingRef}>
-            <h2 className="text-4xl lg:text-5xl font-bold font-heading mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold font-heading mb-6 flex flex-wrap justify-center leading-relaxed py-2">
               <VerticalCutReveal splitBy="characters" staggerDuration={0.03}>
                 Plans that work best for you
               </VerticalCutReveal>
@@ -147,7 +153,7 @@ export default function PricingSection() {
           </TimelineContent>
 
           <TimelineContent animationNum={2} timelineRef={pricingRef}>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground mb-4">
               Trusted by retailers across India. Choose the plan that fits your business needs.
             </p>
           </TimelineContent>
@@ -192,7 +198,11 @@ export default function PricingSection() {
                 </CardHeader>
 
                 <CardContent>
-                  <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full mb-6">
+                  <Button
+                    variant={plan.popular ? "hero" : "heroOutline"}
+                    className="w-full mb-6"
+                    onClick={handleGetStarted}
+                  >
                     {plan.buttonText}
                   </Button>
 

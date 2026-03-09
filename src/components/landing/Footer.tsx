@@ -20,16 +20,16 @@ const Footer = () => (
             <a href="https://www.linkedin.com/company/dequeue" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
               <Linkedin className="w-4 h-4" />
             </a>
-            <a href="https://twitter.com/dequeue" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+            <a href="https://twitter.com/DequeueRetail" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
               <Twitter className="w-4 h-4" />
             </a>
-            <a href="https://instagram.com/dequeue" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+            <a href="https://www.instagram.com/dequeue_official" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
               <Instagram className="w-4 h-4" />
             </a>
-            <a href="https://youtube.com/@dequeue" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+            {/* <a href="https://youtube.com/@dequeue" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
               <Youtube className="w-4 h-4" />
-            </a>
-            <a href="mailto:founders@dequeue.co.in" className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+            </a> */}
+            <a href="mailto:info@dequeue.co.in" className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
               <Mail className="w-4 h-4" />
             </a>
           </div>
@@ -65,8 +65,8 @@ const Footer = () => (
 
           <h4 className="font-heading font-semibold mb-3 mt-6 text-sm uppercase tracking-wider text-muted-foreground">Contact</h4>
           <ul className="space-y-2">
-            <li><a href="mailto:founders@dequeue.co.in" className="text-sm text-muted-foreground hover:text-foreground transition-colors">founders@dequeue.co.in</a></li>
-            <li><a href="https://dequeue.co.in" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">dequeue.co.in</a></li>
+            <li><a href="mailto:info@dequeue.co.in" className="text-sm text-muted-foreground hover:text-foreground transition-colors">info@dequeue.co.in</a></li>
+            {/* <li><a href="https://dequeue.co.in" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">dequeue.co.in</a></li> */}
           </ul>
         </div>
       </div>

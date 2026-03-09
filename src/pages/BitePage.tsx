@@ -6,7 +6,10 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { UtensilsCrossed, Box, CreditCard, BarChart3, Palette, Globe, ArrowRight, Check, Users, TrendingUp, Clock, Heart } from "lucide-react";
+import {
+  UtensilsCrossed, Box, CreditCard, BarChart3, Palette, Globe,
+  ArrowRight, Check, Users, TrendingUp, Clock, Heart, Info
+} from "lucide-react";
 import { Sparkles } from "@/components/ui/sparkles";
 import biteImg from "@/assets/product-bite.jpg";
 
@@ -20,8 +23,8 @@ const features = [
 ];
 
 const benefits = [
-  { icon: Clock, metric: "40%", label: "Faster table turnover" },
-  { icon: TrendingUp, metric: "25%", label: "Higher average order value" },
+  { icon: Clock, metric: "22%", label: "Faster table turnover" },
+  { icon: TrendingUp, metric: "15%", label: "Higher average order value" },
   { icon: Users, metric: "60%", label: "Reduced wait time" },
   { icon: Heart, metric: "95%", label: "Customer satisfaction" },
 ];
@@ -54,7 +57,20 @@ const BitePage = () => {
         <div className="section-container relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-              <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-sm text-primary font-semibold mb-6">Dequeue Bite</span>
+              <a
+                href="#info"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-2.5 rounded-full border border-primary/30 bg-primary/10 hover:bg-primary/20 text-base text-primary font-semibold mb-6 transition-all cursor-pointer group"
+              >
+                <Info className="w-5 h-5 mr-2" />
+                Dequeue Bite
+                <span className="text-muted-foreground ml-2 font-normal group-hover:text-primary transition-colors">
+                  — See how it works
+                </span>
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </a>
+
               <h1 className="text-5xl lg:text-7xl font-bold font-heading mb-6 leading-[1.05]">
                 The Future of <span className="gradient-text">Dining.</span>
               </h1>
@@ -62,10 +78,17 @@ const BitePage = () => {
                 Bite transforms restaurant menus into immersive digital experiences. Customers explore dishes in interactive 3D, order instantly, and pay without waiting for staff. Fully customizable to your brand.
               </p>
               <p className="text-sm text-primary font-heading font-semibold mb-8">No queues. Just #Dequeue.</p>
+
+              {/* CLEANED UP CTA GROUP */}
               <div className="flex flex-wrap gap-4">
-                <Button variant="hero" size="lg" asChild><Link to="/contact">Request Demo <ArrowRight className="ml-1 w-4 h-4" /></Link></Button>
-                <Button variant="heroOutline" size="lg" asChild><Link to="/pricing">View Pricing</Link></Button>
+                <Button variant="hero" size="lg" asChild>
+                  <Link to="/contact">Request Demo <ArrowRight className="ml-1 w-4 h-4" /></Link>
+                </Button>
+                <Button variant="heroOutline" size="lg" asChild>
+                  <Link to="/pricing">View Pricing</Link>
+                </Button>
               </div>
+
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 50, scale: 0.95 }} animate={{ opacity: 1, x: 0, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }} style={{ y }}>
               <div className="relative rounded-3xl overflow-hidden liquid-glass-card">

@@ -215,7 +215,7 @@ const Hero = () => (
         >
           #Dequeue
         </motion.span>{" "}
-        — Trusted by retailers and restaurants across India
+        — Engineered for modern retail.
       </motion.p>
     </div>
 

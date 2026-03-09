@@ -172,13 +172,15 @@ const VerticalCutReveal = forwardRef<VerticalCutRevealRef, TextProps>(
             <span
               key={wordIndex}
               aria-hidden="true"
-              className={cn("inline-flex overflow-hidden", wordLevelClassName)}
+              // The fix: Add pb-2 to expand the mask, -mb-2 to prevent layout shifting
+              className={cn("inline-flex overflow-hidden pb-2 -mb-2", wordLevelClassName)}
             >
               {wordObj.characters.map((char, charIndex) => (
                 <span
                   className={cn(
                     elementLevelClassName,
-                    "whitespace-pre-wrap relative"
+                    // Ensure the character respects the new bounding box
+                    "whitespace-pre-wrap relative inline-flex"
                   )}
                   key={charIndex}
                 >
