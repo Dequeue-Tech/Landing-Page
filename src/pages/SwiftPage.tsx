@@ -1,7 +1,8 @@
 import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import CTASection from "@/components/landing/CTASection";
-import ProductPricing from "@/components/landing/ProductPricing";
+import BulkBookings from "@/components/landing/BulkBookings";
+import ComingSoon from "@/components/landing/ComingSoon";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
@@ -139,7 +140,12 @@ const SwiftPage = () => {
         </div>
       </section>
 
-      <ProductPricing productName="Swift" plans={swiftPricing} />
+      {/* <ProductPricing productName="Swift" plans={swiftPricing} /> */}
+      <ComingSoon 
+   productName="Swift" 
+        description="Our revolutionary smart cart system is almost ready. Experience the future of retail - where shopping carts think, sync, and simplify your journey. Be the first to transform your store."
+      />
+      {/* <BulkBookings type="retail" /> */}
       <CTASection />
       <Footer />
     </div>

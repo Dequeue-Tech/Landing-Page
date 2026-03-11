@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Check } from "lucide-react";
+import { Check, Gift, Percent } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import NumberFlow from "@number-flow/react";
@@ -31,7 +31,7 @@ const ProductPricing = ({ productName, plans }: ProductPricingProps) => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-12"
+          className="text-center max-w-3xl mx-auto mb-8"
         >
           <span className="inline-block px-4 py-1.5 rounded-full border border-border bg-secondary text-sm text-muted-foreground mb-6">
             {productName} Pricing
@@ -40,6 +40,24 @@ const ProductPricing = ({ productName, plans }: ProductPricingProps) => {
             Choose Your {productName} Plan
           </h2>
           <p className="text-muted-foreground">No hidden fees. Cancel anytime.</p>
+
+          {/* Free Trial Advertisement */}
+          <motion.div 
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={inView ? { scale: 1, opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-6 p-4 rounded-2xl bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 inline-block"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                <Gift className="w-5 h-5 text-primary" />
+              </div>
+              <div className="text-left">
+                <p className="text-sm font-semibold text-primary">🎉 Free 1-Month Trial - No Questions Asked!</p>
+                <p className="text-xs text-muted-foreground">Try any plan risk-free. Full access, zero commitment.</p>
+              </div>
+            </div>
+          </motion.div>
 
           <div className="flex justify-center mt-8">
             <div className="relative flex items-center gap-1 rounded-full border border-border bg-secondary/50 p-1 backdrop-blur-sm">
@@ -65,13 +83,25 @@ const ProductPricing = ({ productName, plans }: ProductPricingProps) => {
                 {isYearly && (
                   <motion.div layoutId={`ps-${productName}`} className="absolute inset-0 rounded-full bg-primary" transition={{ type: "spring", bounce: 0.2, duration: 0.5 }} />
                 )}
-                <span className="relative z-10">Yearly</span>
+                <span className="relative z-10 flex items-center gap-1.5">
+                  Yearly
+                  <div className="flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-green-500/20 text-green-600 text-[10px] font-bold">
+                    <Percent className="w-3 h-3" />
+                    Save 17%
+                  </div>
+                </span>
               </button>
             </div>
           </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* The Dynamic Grid Layout Fix */}
+        <div className={cn(
+          "grid gap-6 mx-auto w-full",
+          plans.length === 1 ? "md:grid-cols-1 max-w-md" : 
+          plans.length === 2 ? "md:grid-cols-2 max-w-4xl" : 
+          "md:grid-cols-3"
+        )}>
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}

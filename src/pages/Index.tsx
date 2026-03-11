@@ -8,7 +8,7 @@ import Stats from "@/components/landing/Stats";
 import Partners from "@/components/landing/Partners";
 import WhyChoose from "@/components/landing/WhyChoose";
 import Testimonials from "@/components/landing/Testimonials";
-import PricingSection from "@/components/ui/pricing-section";
+import PricingGeneralized from "@/components/ui/pricing-generalized";
 import FAQ from "@/components/landing/FAQ";
 import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/landing/Footer";
@@ -25,7 +25,7 @@ const Index = () => (
     <Partners />
     <WhyChoose />
     <Testimonials />
-    <PricingSection />
+    <PricingGeneralized />
     <FAQ />
     <CTASection />
     <Footer />

@@ -2,13 +2,15 @@ import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import CTASection from "@/components/landing/CTASection";
 import ProductPricing from "@/components/landing/ProductPricing";
+import BulkBookings from "@/components/landing/BulkBookings";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   UtensilsCrossed, Box, CreditCard, BarChart3, Palette, Globe,
-  ArrowRight, Check, Users, TrendingUp, Clock, Heart, Info
+  ArrowRight, Check, Users, TrendingUp, Clock, Heart, Info,
+  Building2, Coffee, Zap, Hotel, ShoppingBag
 } from "lucide-react";
 import { Sparkles } from "@/components/ui/sparkles";
 import biteImg from "@/assets/product-bite.jpg";
@@ -29,12 +31,50 @@ const benefits = [
   { icon: Heart, metric: "95%", label: "Customer satisfaction" },
 ];
 
-const perfectFor = ["Fine Dining Restaurants", "Casual Dining Chains", "Cafés & Bistros", "Quick Service Restaurants", "Hotel Dining", "Food Courts"];
+// const dataPoints = [
+//   { metric: "500+", label: "Restaurants using Bite" },
+//   { metric: "1M+", label: "Orders processed monthly" },
+//   { metric: "₹50Cr+", label: "Transaction volume annually" },
+//   { metric: "4.8/5", label: "Average restaurant rating" },
+// ];
+
+const perfectFor = [
+  { 
+    name: "Fine Dining Restaurants", 
+    icon: UtensilsCrossed,
+    image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&h=400&fit=crop"
+  },
+  { 
+    name: "Casual Dining Chains", 
+    icon: Building2,
+    image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&h=400&fit=crop"
+  },
+  { 
+    name: "Cafés & Bistros", 
+    icon: Coffee,
+    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=400&fit=crop"
+  },
+  { 
+    name: "Quick Service", 
+    icon: Zap,
+    image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&h=400&fit=crop"
+  },
+  { 
+    name: "Hotel Dining", 
+    icon: Hotel,
+    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop"
+  },
+  { 
+    name: "Food Courts", 
+    icon: ShoppingBag,
+    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&h=400&fit=crop"
+  },
+];
 
 const bitePricing = [
-  { name: "Bite Starter", price: 399, yearlyPrice: 3999, features: ["Up to 5 tables", "Basic menu digitization", "QR code ordering", "Email support", "Standard branding"] },
-  { name: "Bite Pro", price: 999, yearlyPrice: 9999, popular: true, features: ["Unlimited tables", "3D menu experience", "Custom branding", "Priority support", "Kitchen display integration", "Analytics dashboard"] },
-  { name: "Bite Enterprise", price: 2499, yearlyPrice: 24999, features: ["Multi-location support", "Advanced analytics & AI", "Dedicated account manager", "POS integration", "Loyalty program", "Custom development"] },
+  { name: "Digital Menu", price: 399, yearlyPrice: 3999, features: ["QR code menu access", "Basic dish listings", "Image gallery", "Standard branding", "Email support", "Up to 50 menu items"] },
+  { name: "Bite POS", price: 599, yearlyPrice: 5999, popular: true, features: ["Everything in Digital Menu", "Complete POS system", "Table management", "Order tracking", "Payment integration", "Kitchen display", "Analytics dashboard", "Priority support"] },
+  // { name: "Chain Restaurants", price: 10000, yearlyPrice: 102000, features: ["Everything in Bite POS", "Up to 10 branches", "Centralized dashboard", "Multi-location analytics", "Unified menu management", "Cross-branch reporting", "Dedicated account manager", "Custom integrations", "24/7 premium support"] },
 ];
 
 const BitePage = () => {
@@ -145,16 +185,62 @@ const BitePage = () => {
         </div>
       </section>
 
+      {/* Data Sell Points Section */}
+      {/* <section className="py-16 page-section border-t border-border/50">
+        <div className="section-container">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {dataPoints.map((d, i) => (
+              <motion.div 
+                key={d.label} 
+                initial={{ opacity: 0, y: 20 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ duration: 0.4, delay: i * 0.1 }} 
+                className="text-center"
+              >
+                <p className="text-3xl lg:text-4xl font-bold font-heading gradient-text mb-2">{d.metric}</p>
+                <p className="text-sm text-muted-foreground">{d.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section> */}
+
       <section className="py-24 page-section">
         <div className="section-container">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold font-heading">Perfect For</h2>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+          
+          {/* Increased max-w to 5xl to give the images room to breathe */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {perfectFor.map((item, i) => (
-              <motion.div key={item} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }} className="flex items-center gap-3 liquid-glass-card p-4">
-                <Check className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-sm font-medium">{item}</span>
+              <motion.div 
+                key={item.name} 
+                initial={{ opacity: 0, y: 20 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ duration: 0.4, delay: i * 0.1 }} 
+                // Changed to flex-col and added 'group' for hover effects
+                className="flex flex-col liquid-glass-card p-2 rounded-2xl group overflow-hidden"
+              >
+                {/* Top Section: Icon and Title */}
+                <div className="flex items-center gap-3 p-3">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <item.icon className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="text-sm font-semibold">{item.name}</span>
+                </div>
+                
+                {/* Bottom Section: Image with hover zoom */}
+                <div className="relative w-full h-40 rounded-xl overflow-hidden mt-1">
+                  <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                  <img 
+                    src={item.image} 
+                    alt={item.name} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  />
+                </div>
               </motion.div>
             ))}
           </div>
@@ -162,6 +248,7 @@ const BitePage = () => {
       </section>
 
       <ProductPricing productName="Bite" plans={bitePricing} />
+      <BulkBookings type="restaurant" />
       <CTASection />
       <Footer />
     </div>

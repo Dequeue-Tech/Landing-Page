@@ -2,12 +2,14 @@ import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import CTASection from "@/components/landing/CTASection";
 import ProductPricing from "@/components/landing/ProductPricing";
+import BulkBookings from "@/components/landing/BulkBookings";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Smartphone, QrCode, CreditCard, BarChart3, Zap, Shield, ArrowRight, Check, ShoppingBag, Scan, LogOut,
+  ShoppingCart, Store, Building2, Monitor, Shirt, Pill
 } from "lucide-react";
 import { Sparkles } from "@/components/ui/sparkles";
 import goImg from "@/assets/product-go.jpg";
@@ -28,6 +30,13 @@ const benefits = [
   { metric: "40%", label: "Lower operational costs" },
 ];
 
+const dataPoints = [
+  { metric: "24/7", label: "Developer-led support" },
+  { metric: "Instant", label: "Order & inventory sync" },
+  { metric: "99.9%", label: "Target infrastructure SLA" },
+  { metric: "99.9%", label: "System uptime" },
+];
+
 const steps = [
   { icon: Scan, num: "01", title: "Scan", desc: "Point your phone camera at product barcodes as you shop" },
   { icon: ShoppingBag, num: "02", title: "Cart", desc: "Items appear in a real-time virtual cart on your screen" },
@@ -35,12 +44,42 @@ const steps = [
   { icon: LogOut, num: "04", title: "Walk Out", desc: "Receipt generated instantly. No lines. No waiting." },
 ];
 
-const useCases = ["Supermarkets & Hypermarkets", "Convenience Stores", "Department Stores", "Electronics Retail", "Fashion & Apparel", "Pharmacy Chains"];
+const useCases = [
+  { 
+    name: "Supermarkets & Hypermarkets", 
+    icon: ShoppingCart,
+    image: "https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=600&h=400&fit=crop"
+  },
+  { 
+    name: "Convenience Stores", 
+    icon: Store,
+    image: "https://images.unsplash.com/photo-1601599561096-f87c95fff1e9?w=600&h=400&fit=crop"
+  },
+  { 
+    name: "Department Stores", 
+    icon: Building2,
+    image: "https://picsum.photos/seed/tech2/600/400"
+  },
+  { 
+    name: "Electronics Retail", 
+    icon: Monitor,
+    image: "https://picsum.photos/seed/retail1/600/400"
+  },
+  { 
+    name: "Fashion & Apparel", 
+    icon: Shirt,
+    image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&h=400&fit=crop"
+  },
+  { 
+    name: "Pharmacy Chains", 
+    icon: Pill,
+    image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&h=400&fit=crop"
+  },
+];
 
 const goPricing = [
-  { name: "Go Basic", price: 299, yearlyPrice: 2999, features: ["Up to 200 transactions/month", "Basic analytics", "Email support", "Single store", "UPI & card payments"] },
-  { name: "Go Pro", price: 799, yearlyPrice: 7999, popular: true, features: ["Unlimited transactions", "Advanced analytics & AI", "Priority support", "Up to 5 stores", "Custom branding", "Promotions engine"] },
-  { name: "Go Enterprise", price: 1999, yearlyPrice: 19999, features: ["Unlimited everything", "Dedicated account manager", "Custom integrations", "Unlimited stores", "SLA guarantee", "On-premise option"] },
+  { name: "Integration", price: 5000, yearlyPrice: 51000, features: ["POS system integration", "Inventory sync", "Basic analytics", "Payment gateway setup", "Email support", "Up to 500 transactions/month"] },
+  { name: "Complete POS", price: 15000, yearlyPrice: 153000, popular: true, features: ["Everything in Integration", "Full checkout system", "Mobile & web checkout", "Scan & Go functionality", "Advanced analytics", "Promotions engine", "Priority support", "Unlimited transactions"] },
 ];
 
 const GoPage = () => {
@@ -153,16 +192,62 @@ const GoPage = () => {
         </div>
       </section>
 
+      {/* Data Sell Points Section */}
+      <section className="py-16 page-section border-t border-border/50">
+        <div className="section-container">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {dataPoints.map((d, i) => (
+              <motion.div 
+                key={d.label} 
+                initial={{ opacity: 0, y: 20 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ duration: 0.4, delay: i * 0.1 }} 
+                className="text-center"
+              >
+                <p className="text-3xl lg:text-4xl font-bold font-heading gradient-text mb-2">{d.metric}</p>
+                <p className="text-sm text-muted-foreground">{d.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-24 page-section">
         <div className="section-container">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold font-heading mb-6">Perfect For</h2>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+          
+          {/* Increased width to 5xl and updated grid for images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {useCases.map((uc, i) => (
-              <motion.div key={uc} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }} className="flex items-center gap-3 liquid-glass-card p-4">
-                <Check className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-sm font-medium">{uc}</span>
+              <motion.div 
+                key={uc.name} 
+                initial={{ opacity: 0, y: 20 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ duration: 0.4, delay: i * 0.08 }} 
+                // Changed to flex-col and added group for hover animations
+                className="flex flex-col liquid-glass-card p-2 rounded-2xl group overflow-hidden"
+              >
+                {/* Header: Icon and Title */}
+                <div className="flex items-center gap-3 p-3">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <uc.icon className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="text-sm font-semibold">{uc.name}</span>
+                </div>
+
+                {/* Body: Image with zoom effect */}
+                <div className="relative w-full h-40 rounded-xl overflow-hidden mt-1">
+                  <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                  <img 
+                    src={uc.image} 
+                    alt={uc.name} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  />
+                </div>
               </motion.div>
             ))}
           </div>
@@ -170,6 +255,7 @@ const GoPage = () => {
       </section>
 
       <ProductPricing productName="Go" plans={goPricing} />
+      <BulkBookings type="retail" />
       <CTASection />
       <Footer />
     </div>

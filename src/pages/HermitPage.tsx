@@ -2,6 +2,8 @@ import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import CTASection from "@/components/landing/CTASection";
 import ProductPricing from "@/components/landing/ProductPricing";
+import BulkBookings from "@/components/landing/BulkBookings";
+import ComingSoon from "@/components/landing/ComingSoon";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
@@ -170,7 +172,12 @@ const HermitPage = () => {
         </div>
       </section>
 
-      <ProductPricing productName="Hermit" plans={hermitPricing} />
+      {/* <ProductPricing productName="Hermit" plans={hermitPricing} /> */}
+      <ComingSoon 
+  productName="Hermit" 
+        description="Our autonomous dark store platform is in final development. Transform your fulfillment with AI-powered robotics, zero human intervention, and 10x faster operations. Join the waiting list."
+      />
+      {/* <BulkBookings type="both" /> */}
       <CTASection />
       <Footer />
     </div>
