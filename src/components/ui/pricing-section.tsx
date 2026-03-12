@@ -14,14 +14,14 @@ import { useNavigate } from "react-router-dom";
 
 const plans = [
   {
-    name: "Starter",
+    name: "Go",
     description: "Perfect for small retailers looking to eliminate queues with mobile checkout.",
     price: 499,
     yearlyPrice: 4999,
     buttonText: "Get started",
     buttonVariant: "outline" as const,
     includes: [
-      "Starter includes:",
+      "Includes:",
       "Dequeue Go mobile checkout",
       "Up to 500 transactions/month",
       "Basic analytics dashboard",
@@ -32,33 +32,34 @@ const plans = [
     ],
   },
   {
-    name: "Business",
-    description: "Best for growing retailers needing advanced features and multi-product access.",
-    price: 1999,
-    yearlyPrice: 19999,
+    name: "Bite",
+    description: "Best for growing restaurants and cafes needing full digitalization with advanced features and multi-product access.",
+    price: 399,
+    yearlyPrice: 3999,
     buttonText: "Get started",
     buttonVariant: "default" as const,
     popular: true,
     includes: [
-      "Everything in Starter, plus:",
-      "Dequeue Go + Bite access",
-      "Unlimited transactions",
-      "Advanced analytics & AI insights",
-      "Priority support",
-      "Up to 10 store locations",
-      "Custom branding",
-      "API access",
+      "Includes:",
+      "QR code menu scanning",
+      "Complete POS system",
+      "Table management",
+      "Order tracking",
+      "Payment integration",
+      "Kitchen Display",
+      "Analytics and reporting",
     ],
   },
   {
     name: "Enterprise",
-    description: "Full platform access with Swift, Hermit, and dedicated infrastructure for large retailers.",
-    price: 4999,
-    yearlyPrice: 49999,
+    description: "Full platform access and dedicated infrastructure for large retailers.",
+    isCustom: true, // <-- Added custom flag here
+    price: 0, 
+    yearlyPrice: 0,
     buttonText: "Contact sales",
     buttonVariant: "outline" as const,
     includes: [
-      "Everything in Business, plus:",
+      "Includes:",
       "Full product suite access",
       "Unlimited stores",
       "Dedicated account manager",
@@ -182,16 +183,28 @@ export default function PricingSection() {
                     <h3 className="text-xl font-heading font-bold">{plan.name}</h3>
                   </div>
 
+                  {/* Conditional "starting from" to preserve vertical alignment */}
+                  <div className="text-muted-foreground text-sm">
+                    {plan.isCustom ? "\u00A0" : "starting from"}
+                  </div>
+
                   <div className="flex items-baseline gap-1 mt-4">
-                    <span className="text-muted-foreground text-lg">₹</span>
-                    <NumberFlow
-                      value={isYearly ? plan.yearlyPrice : plan.price}
-                      className="text-4xl font-bold font-heading"
-                      transformTiming={{ duration: 500, easing: "ease-out" }}
-                    />
-                    <span className="text-muted-foreground text-sm">
-                      /{isYearly ? "year" : "month"}
-                    </span>
+                    {/* Conditional Price Rendering */}
+                    {plan.isCustom ? (
+                      <span className="text-2xl font-bold font-heading">Contact Sales for Custom Pricing</span>
+                    ) : (
+                      <>
+                        <span className="text-muted-foreground text-lg">₹</span>
+                        <NumberFlow
+                          value={isYearly ? plan.yearlyPrice : plan.price}
+                          className="text-4xl font-bold font-heading"
+                          transformTiming={{ duration: 500, easing: "ease-out" }}
+                        />
+                        <span className="text-muted-foreground text-sm">
+                          /{isYearly ? "year" : "month"}
+                        </span>
+                      </>
+                    )}
                   </div>
 
                   <p className="text-sm text-muted-foreground mt-3">{plan.description}</p>
