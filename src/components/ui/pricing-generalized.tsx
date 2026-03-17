@@ -1,9 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, Check, Layers, Zap, TrendingUp } from "lucide-react";
+import { ArrowRight, Check, Layers, TrendingUp, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Sparkles } from "@/components/ui/sparkles";
 
 const tiers = [
   {
@@ -59,10 +58,7 @@ const PricingGeneralized = () => {
 
   return (
     <section className="py-24 page-section relative overflow-hidden" ref={ref}>
-      {/* Background effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        <Sparkles className="w-full h-full" density={80} size={1.2} speed={0.4} color="hsl(217 91% 60%)" opacity={0.2} />
-      </div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(217_91%_60%_/_0.12),transparent_38%)] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full glow-bg opacity-10 pointer-events-none" />
 
       <div className="section-container relative z-10">
@@ -75,12 +71,10 @@ const PricingGeneralized = () => {
           <span className="inline-block px-4 py-1.5 rounded-full border border-border bg-secondary text-sm text-muted-foreground mb-6">
             Flexible Plans
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold font-heading mb-6">
-            Solutions for Every Business Size
-          </h2>
+          <h2 className="text-4xl lg:text-5xl font-bold font-heading mb-6">Solutions for Every Business Size</h2>
           <p className="text-lg text-muted-foreground">
-            From single stores to multi-location chains, we have the perfect solution.
-            Visit individual product pages for detailed pricing.
+            From single stores to multi-location chains, we have the perfect solution. Visit individual product pages
+            for detailed pricing.
           </p>
         </motion.div>
 
@@ -92,12 +86,11 @@ const PricingGeneralized = () => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className={`liquid-glass-card p-8 relative overflow-hidden group hover:border-primary/30 transition-all duration-300 ${
-                tier.popular ? 'border-primary/50 shadow-[0_0_40px_hsl(217_91%_60%/0.15)]' : ''
+                tier.popular ? "border-primary/50 shadow-[0_0_40px_hsl(217_91%_60%/0.15)]" : ""
               }`}
             >
-              {/* Background gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${tier.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-              
+
               {tier.popular && (
                 <div className="absolute top-0 right-0 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-bl-lg z-10">
                   Most Popular
@@ -105,18 +98,13 @@ const PricingGeneralized = () => {
               )}
 
               <div className="relative">
-                {/* Icon */}
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
                   <tier.icon className="w-7 h-7 text-primary" />
                 </div>
 
-                {/* Title & Description */}
                 <h3 className="font-heading font-bold text-2xl mb-3">{tier.name}</h3>
-                <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
-                  {tier.description}
-                </p>
+                <p className="text-sm text-muted-foreground mb-6 leading-relaxed">{tier.description}</p>
 
-                {/* Features */}
                 <div className="space-y-3 mb-8">
                   {tier.features.map((feature, fi) => (
                     <div key={fi} className="flex items-start gap-3">
@@ -126,12 +114,7 @@ const PricingGeneralized = () => {
                   ))}
                 </div>
 
-                {/* CTA Button */}
-                <Button 
-                  variant={tier.popular ? "hero" : "heroOutline"} 
-                  className="w-full group/btn"
-                  asChild
-                >
+                <Button variant={tier.popular ? "hero" : "heroOutline"} className="w-full group/btn" asChild>
                   <Link to="/products">
                     {tier.cta}
                     <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -142,7 +125,6 @@ const PricingGeneralized = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -152,12 +134,10 @@ const PricingGeneralized = () => {
           <div className="liquid-glass-card p-8 rounded-3xl max-w-3xl mx-auto relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10" />
             <div className="relative">
-              <h3 className="font-heading font-bold text-2xl mb-3">
-                Need Custom Solutions?
-              </h3>
+              <h3 className="font-heading font-bold text-2xl mb-3">Need Custom Solutions?</h3>
               <p className="text-muted-foreground mb-6">
-                We offer tailored packages for unique business requirements. 
-                Get in touch for a personalized demo and custom pricing.
+                We offer tailored packages for unique business requirements. Get in touch for a personalized demo and
+                custom pricing.
               </p>
               <Button variant="hero" size="lg" asChild>
                 <Link to="/contact">
