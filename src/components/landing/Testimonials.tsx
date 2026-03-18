@@ -4,24 +4,24 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "Dequeue's Go system reduced our checkout time by 80%. Our customers love the scan-and-go experience.",
-    author: "Priya Sharma",
-    role: "Operations Head, Metro Fresh Mart",
+    quote: "The Go checkout flow is incredibly intuitive. Eliminating hardware from the equation completely changes how we think about our future store layouts.",
+    author: "Priya S.",
+    role: "Operations Director, Regional Grocery Chain",
   },
   {
-    quote: "Bite transformed our restaurant. Table turnover increased by 40% and our average order value is up 25%.",
-    author: "Rahul Menon",
-    role: "Founder, Spice Route Restaurants",
+    quote: "Moving away from clunky PDF menus to an interactive digital experience is exactly the shift the modern hospitality industry has been waiting for.",
+    author: "Rahul M.",
+    role: "Independent Restaurant Owner",
   },
   {
-    quote: "The Swift smart cart is a game changer. Installation was seamless and our customers are genuinely excited.",
-    author: "Ananya Gupta",
-    role: "CTO, UrbanStore India",
+    quote: "Implementing the Go system was seamless. The fact that it integrates without needing to rip out our existing POS is a massive win for our IT team.",
+    author: "Sumit G.",
+    role: "Retail Technology Consultant",
   },
   {
-    quote: "Hermit's autonomous fulfillment has cut our operational costs by 60%. It's like a store that runs itself.",
-    author: "Vikram Patel",
-    role: "VP Operations, QuickCommerce Co.",
+    quote: "Bite's table management features solve the exact bottlenecks keeping high-volume restaurant operators awake at night.",
+    author: "Vikram P.",
+    role: "Hospitality Strategist",
   },
 ];
 

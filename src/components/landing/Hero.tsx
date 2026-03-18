@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import type { Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-retail.jpg";
 
@@ -254,7 +252,6 @@ const Hero = () => (
       </motion.p>
     </div>
 
-    {/* Bottom gradient fade */}
     <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
   </section>
 );

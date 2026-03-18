@@ -134,6 +134,14 @@
     @apply max-w-7xl mx-auto px-6 lg:px-8;
   }
 
+  /* Mobile spacing for sections below navbar */
+  @media (max-width: 768px) {
+    .page-section:first-of-type,
+    section:first-of-type {
+      @apply pt-24; /* Increased from default to add more spacing below navbar on mobile */
+    }
+  }
+
   .gradient-text {
     @apply bg-clip-text text-transparent;
     background-image: var(--gradient-primary);
