@@ -1,1 +1,0 @@
-import{r as e,j as r}from"./react-core-o_a1pmSD.js";var t=e.createContext(void 0),o=({client:o,children:a})=>(e.useEffect(()=>(o.mount(),()=>{o.unmount()}),[o]),r.jsx(t.Provider,{value:o,children:a}));export{o as Q};
