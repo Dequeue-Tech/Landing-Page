@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dequeue - Mobile Retail POS Software | End Checkout Queues</title>
+  <title>Dequeue – Redefining Retail Checkouts</title>
   <meta name="description"
-    content="Dequeue eliminates checkout queues with mobile checkout, smart carts, interactive restaurant ordering, and autonomous dark stores. Scan. Pay. Go." />
+    content="Dequeue eliminates checkout queues with mobile checkout, smart carts, interactive restaurant ordering, and autonomous dark stores." />
   <meta name="keywords"
     content="Deq, retail POS software, mobile checkout, smart carts, queue-free retail, autonomous stores, restaurant ordering, point of sale, POS system, mobile POS, retail technology, checkout solutions, frictionless shopping, touchless payment, automated retail, Dequeue, retail innovation, shopping technology, Dequeue POS, DQ, Dequeue go, Dequeue Bite, Deq, deque, deque POS, dequeue reatil technologies pvt ltd" />
   <meta name="author" content="Dequeue" />
@@ -14,6 +14,22 @@
     content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1, noarchive" />
   <link rel="canonical" href="https://www.dequeue.co.in" />
   <link rel="icon" type="image/x-icon" href="/logo.ico" />
+  
+  <!-- ⚡ Performance Critical: Preload critical fonts -->
+  <!-- NOTE: Image preloads are handled by Vite's import system automatically -->
+  
+  <!-- ⚡ Font optimization: Preconnect to font CDN and preload critical fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  
+  <!-- ⚡ Reduce time to LCP: Preload critical font files directly -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQikyr0j-8uVRAyzQxW5-e2hnl-DQf3l9BSgH_aFy-8fMp8HNLx8hYFD6J3l_tVkOqN42MxKKVQ.woff2" crossorigin type="font/woff2" />
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v18/UcCO_p8_kxAbqzL94CIwAL6Pg5JqKjjEIIV6dLIKDvA.woff2" crossorigin type="font/woff2" />
+  
+  <!-- DNS prefetch for external resources -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
@@ -65,15 +81,26 @@
         }
       ]
     }
-    </script>
-  <!-- Google tag (gtag.js) -->
+  </script>
+  
+  <!-- ⚡ Performance: Defer Google Analytics to avoid blocking render -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F6XZ0SL3WE"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-F6XZ0SL3WE');
+    // Use requestIdleCallback to initialize tracking after main thread is free
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-F6XZ0SL3WE');
+      });
+    } else {
+      // Fallback for older browsers
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-F6XZ0SL3WE');
+    }
   </script>
 </head>
 

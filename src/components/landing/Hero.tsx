@@ -19,19 +19,13 @@ const fadeUp: Variants = {
   hidden: {
     opacity: 0,
     y: 60,
-    filter: "blur(12px)",
-    scale: 0.95
   },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    scale: 1,
     transition: {
       duration: 0.8,
-      ease: [0.22, 1, 0.36, 1], // Custom cubic-bezier for smoother motion
-      filter: { duration: 0.6 },
-      scale: { duration: 0.7 }
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
@@ -39,51 +33,44 @@ const fadeUp: Variants = {
 const scaleIn: Variants = {
   hidden: {
     opacity: 0,
-    scale: 0.7,
-    rotate: -10
+    scale: 0.95,
   },
   visible: {
     opacity: 1,
     scale: 1,
-    rotate: 0,
     transition: {
-      type: "spring",
-      damping: 20,
-      stiffness: 300,
-      duration: 0.6
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
+// ⚡ Performance: Use only transform animations (will-change hints added)
 const floatingParticle: Variants = {
   animate: {
     y: [0, -80, 0],
     x: [0, 25, 0],
     opacity: [0.3, 0.8, 0.3],
-    scale: [0.8, 1.3, 0.8],
     transition: {
       duration: 6,
       repeat: Infinity,
       ease: "easeInOut",
-      delay: 0,
     },
   },
 };
 
 const Hero = () => (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-    {/* Background image with continuous slow pan */}
+    {/* Background image - reduced scale animation for performance */}
     <motion.div
       className="absolute inset-[-10%]"
       animate={{
-        scale: [1, 1.05, 1.02, 1.04, 1],
-        x: [0, 12, -8, 4, 0],
-        y: [0, -8, 4, -4, 0],
+        scale: [1, 1.03, 1],
       }}
       transition={{
         duration: 25,
         repeat: Infinity,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        ease: "easeInOut",
       }}
       style={{ willChange: "transform" }}
     >
@@ -91,87 +78,92 @@ const Hero = () => (
         src={heroImg}
         alt="Futuristic queue-free retail store"
         className="w-full h-full object-cover opacity-[0.07]"
+        decoding="async"
+        loading="eager"
+        fetchPriority="high"
+        sizes="100vw"
+        style={{ contentVisibility: "auto" }}
       />
     </motion.div>
 
-    {/* Continuously orbiting glow orbs */}
+    {/* Main glow orb - simplified motion */}
     <motion.div
       className="absolute w-[500px] h-[500px] rounded-full glow-bg pointer-events-none"
       animate={{
-        x: ["-50%", "-35%", "-50%", "-65%", "-50%"],
-        y: ["-50%", "-55%", "-45%", "-60%", "-50%"],
-        scale: [1, 1.15, 0.95, 1.08, 1],
-        opacity: [0.25, 0.45, 0.2, 0.4, 0.25],
+        x: ["-50%", "-40%", "-50%"],
+        y: ["-50%", "-55%", "-50%"],
+        opacity: [0.25, 0.45, 0.25],
       }}
       transition={{
         duration: 12,
         repeat: Infinity,
-        ease: [0.25, 0.46, 0.45, 0.94],
-        times: [0, 0.25, 0.5, 0.75, 1]
+        ease: "easeInOut",
       }}
       style={{
         top: "50%",
         left: "50%",
-        willChange: "transform, opacity"
+        willChange: "transform, opacity",
       }}
     />
+
+    {/* Secondary glow orb */}
     <motion.div
       className="absolute w-[350px] h-[350px] rounded-full bg-primary/8 pointer-events-none blur-3xl"
       animate={{
-        x: [0, 60, 30, -45, 0],
-        y: [0, -40, 25, -15, 0],
-        opacity: [0.12, 0.3, 0.18, 0.35, 0.12],
-        scale: [0.9, 1.1, 0.95, 1.05, 0.9],
+        x: [0, 40, 0],
+        y: [0, -30, 0],
+        opacity: [0.12, 0.3, 0.12],
       }}
       transition={{
         duration: 16,
         repeat: Infinity,
-        ease: [0.25, 0.46, 0.45, 0.94],
-        delay: 2
+        ease: "easeInOut",
+        delay: 2,
       }}
       style={{
         top: "30%",
         left: "20%",
-        willChange: "transform, opacity"
+        willChange: "transform, opacity",
       }}
     />
+
+    {/* Tertiary glow orb */}
     <motion.div
       className="absolute w-[280px] h-[280px] rounded-full bg-primary/6 pointer-events-none blur-3xl"
       animate={{
-        x: [0, -35, 50, -25, 0],
-        y: [0, 35, -25, 40, 0],
-        opacity: [0.08, 0.25, 0.12, 0.3, 0.08],
-        scale: [0.85, 1.15, 0.9, 1.08, 0.85],
+        x: [0, -30, 0],
+        y: [0, 30, 0],
+        opacity: [0.08, 0.25, 0.08],
       }}
       transition={{
         duration: 14,
         repeat: Infinity,
-        ease: [0.25, 0.46, 0.45, 0.94],
-        delay: 4
+        ease: "easeInOut",
+        delay: 4,
       }}
       style={{
         bottom: "20%",
         right: "15%",
-        willChange: "transform, opacity"
+        willChange: "transform, opacity",
       }}
     />
 
-    {/* Floating particles */}
-    {[...Array(6)].map((_, i) => (
+    {/* Floating particles - only 3 instead of 6 for performance */}
+    {[...Array(3)].map((_, i) => (
       <motion.div
         key={i}
         className="absolute w-1 h-1 rounded-full bg-primary/30 pointer-events-none"
         style={{
-          top: `${20 + i * 12}%`,
-          left: `${10 + i * 15}%`,
-          willChange: "transform, opacity"
+          top: `${20 + i * 24}%`,
+          left: `${10 + i * 30}%`,
+          willChange: "transform, opacity",
         }}
         variants={floatingParticle}
         animate="animate"
         transition={{
           duration: 5 + i * 0.5,
           repeat: Infinity,
-          ease: [0.25, 0.46, 0.45, 0.94],
+          ease: "easeInOut",
           delay: i * 0.8,
         }}
       />
@@ -183,153 +175,64 @@ const Hero = () => (
         initial="hidden"
         animate="visible"
       >
-        {/* Badge with continuous shimmer */}
+        {/* Badge - simplified animation */}
         <motion.div variants={scaleIn}>
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-secondary mb-8 relative overflow-hidden"
-            animate={{
-              borderColor: ["hsl(220 15% 14%)", "hsl(217 91% 60% / 0.3)", "hsl(220 15% 14%)"],
-              boxShadow: ["0 0 0px rgba(59, 130, 246, 0)", "0 0 20px rgba(59, 130, 246, 0.1)", "0 0 0px rgba(59, 130, 246, 0)"]
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: [0.25, 0.46, 0.45, 0.94]
-            }}
-            style={{ willChange: "border-color, box-shadow" }}
-          >
-            {/* Shimmer sweep */}
-            <motion.div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: "linear-gradient(90deg, transparent, hsl(217 91% 60% / 0.06), transparent)",
-                willChange: "transform"
-              }}
-              animate={{ x: ["-100%", "200%"] }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-                repeatDelay: 4
-              }}
-            />
-            <motion.span
-              className="px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-xs font-semibold"
-              animate={{
-                scale: [1, 1.08, 1],
-                rotate: [0, 2, 0]
-              }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                ease: [0.25, 0.46, 0.45, 0.94]
-              }}
-              style={{ willChange: "transform" }}
-            >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-secondary mb-8">
+            <span className="px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-xs font-semibold">
               New
-            </motion.span>
+            </span>
             <span className="text-sm text-muted-foreground">Queue-Free Retail Technology</span>
-          </motion.div>
+          </div>
         </motion.div>
 
-        {/* Heading with continuous gradient shift on #Dequeue */}
+        {/* Heading */}
         <motion.h1
           variants={fadeUp}
           className="text-5xl sm:text-6xl lg:text-7xl font-bold font-heading leading-[1.05] mb-6 text-balance"
         >
           Why Wait in Queues?<br />
-          <motion.span
-            className="inline-block bg-clip-text text-transparent"
-            style={{
-              backgroundImage: "linear-gradient(90deg, hsl(217 91% 60%), hsl(199 89% 48%), hsl(280 80% 60%), hsl(217 91% 60%))",
-              backgroundSize: "300% 100%",
-              willChange: "background-position"
-            }}
-            animate={{ backgroundPosition: ["0% center", "100% center", "0% center"] }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: [0.25, 0.46, 0.45, 0.94]
-            }}
-          >
+          <span className="inline-block bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
             Just #Dequeue.
-          </motion.span>
+          </span>
         </motion.h1>
 
-        {/* Subtext with gentle breathing */}
+        {/* Subtext */}
         <motion.p
           variants={fadeUp}
           className="text-lg text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed"
-          animate={{
-            opacity: [0.9, 1, 0.9],
-            y: [0, -2, 0]
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: [0.25, 0.46, 0.45, 0.94],
-            delay: 1
-          }}
-          style={{ willChange: "opacity, transform" }}
         >
           Dequeue builds the infrastructure that eliminates checkout lines forever. Four customizable products. One mission. Scan. Pay. Go.
         </motion.p>
 
-        {/* Buttons with continuous glow pulse */}
+        {/* Buttons */}
         <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-4">
           <motion.div
             whileHover={{
               scale: 1.03,
-              transition: { type: "spring", damping: 25, stiffness: 400 }
+              transition: { type: "spring", damping: 25, stiffness: 400 },
             }}
             whileTap={{
               scale: 0.98,
-              transition: { type: "spring", damping: 25, stiffness: 400 }
-            }}
-            animate={{
-              boxShadow: [
-                "0 0 0px hsl(217 91% 60% / 0)",
-                "0 0 30px hsl(217 91% 60% / 0.2)",
-                "0 0 0px hsl(217 91% 60% / 0)"
-              ]
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: [0.25, 0.46, 0.45, 0.94]
+              transition: { type: "spring", damping: 25, stiffness: 400 },
             }}
             className="rounded-lg"
-            style={{ willChange: "transform, box-shadow" }}
+            style={{ willChange: "transform" }}
           >
             <Button variant="hero" size="lg" asChild>
               <Link to="/contact">
                 Get in touch
-                <motion.span
-                  className="inline-block ml-1"
-                  animate={{
-                    x: [0, 6, 0],
-                    scale: [1, 1.1, 1]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: [0.25, 0.46, 0.45, 0.94]
-                  }}
-                  style={{ willChange: "transform" }}
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </motion.span>
+                <ArrowRight className="w-4 h-4 ml-1" />
               </Link>
             </Button>
           </motion.div>
           <motion.div
             whileHover={{
               scale: 1.03,
-              transition: { type: "spring", damping: 25, stiffness: 400 }
+              transition: { type: "spring", damping: 25, stiffness: 400 },
             }}
             whileTap={{
               scale: 0.98,
-              transition: { type: "spring", damping: 25, stiffness: 400 }
+              transition: { type: "spring", damping: 25, stiffness: 400 },
             }}
             style={{ willChange: "transform" }}
           >
@@ -340,22 +243,14 @@ const Hero = () => (
         </motion.div>
       </motion.div>
 
-      {/* Bottom trust line with pulsing highlight */}
+      {/* Bottom trust line */}
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
         className="mt-20 text-sm text-muted-foreground"
       >
-        Skip the queue.{" "}
-        <motion.span
-          className="text-primary font-heading font-semibold inline-block"
-          animate={{ opacity: [0.7, 1, 0.7], scale: [1, 1.05, 1] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" as const }}
-        >
-          #Dequeue
-        </motion.span>{" "}
-        — Engineered for modern retail.
+        Skip the queue. <span className="text-primary font-heading font-semibold">#Dequeue</span> — Engineered for modern retail.
       </motion.p>
     </div>
 

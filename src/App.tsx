@@ -1,24 +1,39 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/hooks/use-theme";
-import Index from "./pages/Index";
-import About from "./pages/About";
-import ProductsPage from "./pages/ProductsPage";
-import BlogPage from "./pages/BlogPage";
-import ContactPage from "./pages/ContactPage";
-import PricingPage from "./pages/PricingPage";
-import GoPage from "./pages/GoPage";
-import BitePage from "./pages/BitePage";
-import SwiftPage from "./pages/SwiftPage";
-import HermitPage from "./pages/HermitPage";
-import TermsPage from "./pages/TermsPage";
-import PrivacyPage from "./pages/PrivacyPage";
-import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+// Eager load home page (critical)
+import Index from "./pages/Index";
+
+// Lazy load all other pages (non-critical)
+const About = lazy(() => import("./pages/About"));
+const ProductsPage = lazy(() => import("./pages/ProductsPage"));
+const BlogPage = lazy(() => import("./pages/BlogPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const PricingPage = lazy(() => import("./pages/PricingPage"));
+const GoPage = lazy(() => import("./pages/GoPage"));
+const BitePage = lazy(() => import("./pages/BitePage"));
+const SwiftPage = lazy(() => import("./pages/SwiftPage"));
+const HermitPage = lazy(() => import("./pages/HermitPage"));
+const TermsPage = lazy(() => import("./pages/TermsPage"));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      gcTime: 1000 * 60 * 10, // 10 minutes (formerly cacheTime)
+    },
+  },
+});
+
+// Loading fallback (minimal, doesn't block interaction)
+const PageLoader = () => <div className="min-h-screen" />;
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -28,19 +43,106 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
+            {/* Eager load home page */}
             <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/products/go" element={<GoPage />} />
-            <Route path="/products/bite" element={<BitePage />} />
-            <Route path="/products/swift" element={<SwiftPage />} />
-            <Route path="/products/hermit" element={<HermitPage />} />
-            <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="*" element={<NotFound />} />
+            
+            {/* Lazy load all other pages */}
+            <Route 
+              path="/about" 
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <About />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="/products" 
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <ProductsPage />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="/products/go" 
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <GoPage />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="/products/bite" 
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <BitePage />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="/products/swift" 
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <SwiftPage />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="/products/hermit" 
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <HermitPage />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="/pricing" 
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <PricingPage />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="/blog" 
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <BlogPage />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="/contact" 
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <ContactPage />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="/terms" 
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <TermsPage />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="/privacy" 
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <PrivacyPage />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="*" 
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <NotFound />
+                </Suspense>
+              } 
+            />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
