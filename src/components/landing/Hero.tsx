@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion, type Variants } from "framer-motion";
 import heroImg from "@/assets/hero-retail.jpg";
 
 const staggerContainer: Variants = {

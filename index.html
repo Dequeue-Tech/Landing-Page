@@ -14,6 +14,30 @@
     content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1, noarchive" />
   <link rel="canonical" href="https://www.dequeue.co.in" />
   <link rel="icon" type="image/x-icon" href="/logo.ico" />
+  <style>
+    #lh-fallback {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #09090b;
+      color: #fafafa;
+      text-align: center;
+    }
+    #lh-fallback h1 {
+      margin: 0;
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    #lh-fallback p {
+      margin: 12px 0 0;
+      color: #a1a1aa;
+      font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    }
+  </style>
   
   <!-- ⚡ Performance Critical: Preload critical fonts -->
   <!-- NOTE: Image preloads are handled by Vite's import system automatically -->
@@ -94,7 +118,14 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <div id="lh-fallback">
+      <div>
+        <h1>Skip the queue. Just Dequeue.</h1>
+        <p>Loading queue-free retail experiences...</p>
+      </div>
+    </div>
+  </div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 

@@ -10,6 +10,9 @@ import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { deferInitialization, prefetchRoutes } from "./lib/performance";
+import heroRetailImage from "./assets/hero-retail.jpg";
+import productGoImage from "./assets/product-go.jpg";
+import productBiteImage from "./assets/product-bite.jpg";
 
 // Render app immediately for fast FCP
 const root = createRoot(document.getElementById("root")!);
@@ -17,11 +20,11 @@ root.render(<App />);
 
 // ⚡ Defer non-critical tasks to avoid blocking paint
 deferInitialization(() => {
-  // Preload images for below-fold sections
+  // Preload only valid, build-resolved assets.
   const imagesToPreload = [
-    "/src/assets/hero-retail.jpg",
-    "/src/assets/problem.jpg",
-    "/src/assets/solution.jpg"
+    heroRetailImage,
+    productGoImage,
+    productBiteImage,
   ];
   imagesToPreload.forEach(src => {
     const img = new Image();
