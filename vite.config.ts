@@ -19,70 +19,54 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    // ⚡ Aggressive minification
+    // Minification settings
     minify: "terser",
     terserOptions: {
       compress: {
         drop_console: true,
         drop_debugger: true,
-        passes: 3,  // ⚡ Multiple compression passes
-        unsafe: true,  // ⚡ Enable unsafe optimizations
-        unsafe_methods: true,
-        unsafe_proto: true,
-        toplevel: true,  // ⚡ Remove dead code at module level
-        arguments: true,
-        arrows: true,
-        evaluate: true,
-        inline: 3,  // ⚡ Inline more aggressively
-        pure_funcs: ["console.log", "console.info"],  // ⚡ Remove pure logs
-      },
-      mangle: {
-        toplevel: true,  // ⚡ Mangle top-level names
-        keep_fnames: false,
+        pure_funcs: ["console.log", "console.info"],
       },
       format: {
-        comments: false,  // ⚡ Remove all comments
-        beautify: false,
+        comments: false,
       },
     },
     rollupOptions: {
       output: {
-        // ⚡ Manual chunk splitting for critical path
+        // Manual chunk splitting for optimal caching and fast load
         manualChunks: (id) => {
           // Vendor chunks
           if (id.includes("node_modules")) {
+            // Keep React, React DOM, Scheduler, and React Router together
+            if (
+              id.includes("/node_modules/react/") ||
+              id.includes("/node_modules/react-dom/") ||
+              id.includes("/node_modules/scheduler/") ||
+              id.includes("/node_modules/react-router/") ||
+              id.includes("/node_modules/react-router-dom/")
+            ) {
+              return "react-vendor";
+            }
             if (id.includes("framer-motion")) {
               return "framer-motion";
-            }
-            if (id.includes("react-router")) {
-              return "react-router";
             }
             if (id.includes("@radix-ui")) {
               return "radix-ui";
             }
-            // ⚡ Put recharts in separate chunk (large library)
             if (id.includes("recharts")) {
               return "recharts";
             }
-            // ⚡ Heavy carousel library - lazy loaded
             if (id.includes("embla-carousel")) {
               return "embla-carousel";
             }
-            // ⚡ Calendar/date libs - only used on specific pages
             if (id.includes("react-day-picker") || id.includes("date-fns")) {
               return "date-libs";
             }
-            // ⚡ Particle animations library - heavy, lazy loaded
             if (id.includes("@tsparticles")) {
               return "tsparticles";
             }
-            // ⚡ React Query - used mostly on lazy product pages
             if (id.includes("@tanstack/react-query")) {
               return "react-query";
-            }
-            // ⚡ Put react+react-dom in another chunk
-            if (id.includes("react") && !id.includes("react-")) {
-              return "react-core";
             }
             return "vendors";
           }
