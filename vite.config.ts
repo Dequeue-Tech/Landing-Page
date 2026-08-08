@@ -70,31 +70,6 @@ export default defineConfig(({ mode }) => ({
             }
             return "vendors";
           }
-          
-          // Landing page components (above-fold) stay in main
-          if (id.includes("/components/landing/Navbar") || 
-              id.includes("/components/landing/Hero") ||
-              id.includes("/components/landing/Stats")) {
-            return null; // Include in main
-          }
-          
-          // Below-fold landing components into separate chunks
-          if (id.includes("/components/landing/")) {
-            return "landing-below-fold";
-          }
-          
-          // Each page gets its own chunk
-          if (id.includes("/pages/")) {
-            const match = id.match(/pages\/([^/]+)\.tsx/);
-            if (match) {
-              return `page-${match[1].toLowerCase()}`;
-            }
-          }
-
-          // UI components shared across pages
-          if (id.includes("/components/ui/")) {
-            return "ui-components";
-          }
         },
         // ⚡ Compress JS chunks
         chunkFileNames: "assets/[name]-[hash:8].js",
