@@ -12,24 +12,24 @@ const products = [
     id: "go",
     icon: Smartphone,
     title: "Go",
-    tagline: "Mobile Checkout. No Lines.",
-    desc: "Turn any smartphone into a checkout terminal. Scan, pay, and walk out.",
+    tagline: "Mobile Checkout. Zero Lines.",
+    desc: "Turn any customer smartphone into a instant mobile checkout terminal.",
     image: goImg,
   },
   {
     id: "bite",
     icon: UtensilsCrossed,
     title: "Bite",
-    tagline: "The Future of Dining",
-    desc: "Interactive 3D menus with instant ordering and payment.",
+    tagline: "Interactive Dining OS",
+    desc: "Touchless order & pay with interactive digital menus and fast tab settlement.",
     image: biteImg,
   },
   {
     id: "swift",
     icon: ShoppingCart,
     title: "Swift",
-    tagline: "Smart Cart Checkout",
-    desc: "Modular smart carts that sync with your phone for real-time checkout.",
+    tagline: "Smart Cart Infrastructure",
+    desc: "Intelligent shopping carts that calculate subtotals and process scan-and-go.",
     image: swiftImg,
   },
   {
@@ -37,34 +37,34 @@ const products = [
     icon: Bot,
     title: "Hermit",
     tagline: "Autonomous Dark Stores",
-    desc: "AI-powered fulfillment with zero human intervention.",
+    desc: "AI-powered robotic fulfillment for 24/7 queue-free micro-hubs.",
     image: hermitImg,
   },
 ];
 
 const ProductsOverview = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "0px" });
 
   return (
-    <section className="py-24 lg:py-32 page-section section-bg-gradient-down" ref={ref}>
-      <div className="section-container">
+    <section className="py-20 lg:py-28 page-section section-bg-gradient-down relative overflow-hidden" ref={ref}>
+      <div className="section-container relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto mb-14"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full border border-border bg-secondary text-sm text-muted-foreground mb-6">
-            Our Products
+          <span className="inline-block px-4 py-1 rounded-full border border-primary/20 bg-primary/5 text-xs font-semibold uppercase tracking-wider text-primary mb-4">
+            Product Ecosystem
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold font-heading mb-6">
-            Four Products. Fully Customizable. Ever Growing.
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading tracking-tight mb-4">
+            Four Modular Solutions. Infinite Scale.
           </h2>
-          <p className="text-lg text-muted-foreground mb-3">
-            Every product is ready to be tailored to your unique business needs — from branding to workflows. And our suite keeps expanding to serve every industry.
+          <p className="text-base text-muted-foreground mb-3 text-balance">
+            Tailor-made for supermarkets, restaurants, boutique stores, and automated micro-fulfillment centers.
           </p>
-          <p className="text-sm text-primary font-heading font-semibold">
+          <p className="text-sm text-primary font-heading font-semibold tracking-wide">
             Queue less. Live more. #Dequeue
           </p>
         </motion.div>
@@ -73,34 +73,37 @@ const ProductsOverview = () => {
           {products.map((p, i) => (
             <motion.div
               key={p.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
             >
               <Link
                 to={`/products/${p.id}`}
-                className="liquid-glass-card overflow-hidden group block"
+                className="liquid-glass-card overflow-hidden group block hover:border-primary/40 transition-all duration-300 h-full flex flex-col justify-between"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-48 overflow-hidden bg-muted">
                   <img
                     src={p.image}
                     alt={p.tagline}
-                    className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
+                    className="w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
                     loading="lazy"
+                    decoding="async"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <p.icon className="w-4 h-4 text-primary" />
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20">
+                        <p.icon className="w-4 h-4 text-primary" />
+                      </div>
+                      <h3 className="font-heading font-bold text-xl">{p.title}</h3>
                     </div>
-                    <h3 className="font-heading font-semibold text-lg">{p.title}</h3>
+                    <p className="text-sm text-primary font-semibold mb-2">{p.tagline}</p>
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{p.desc}</p>
                   </div>
-                  <p className="text-sm text-primary font-medium mb-2">{p.tagline}</p>
-                  <p className="text-sm text-muted-foreground mb-4">{p.desc}</p>
-                  <span className="inline-flex items-center text-sm text-primary font-medium group-hover:gap-2 transition-all">
-                    Learn more <ArrowRight className="w-3 h-3 ml-1" />
+                  <span className="inline-flex items-center text-sm text-primary font-semibold group-hover:translate-x-1 transition-transform">
+                    Explore {p.title} <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
                   </span>
                 </div>
               </Link>
@@ -113,3 +116,4 @@ const ProductsOverview = () => {
 };
 
 export default ProductsOverview;
+

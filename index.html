@@ -15,6 +15,10 @@
   <link rel="canonical" href="https://www.dequeue.co.in" />
   <link rel="icon" type="image/x-icon" href="/logo.ico" />
 
+  <!-- Resource Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.dequeue.co.in" />
@@ -66,14 +70,25 @@
       ]
     }
     </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F6XZ0SL3WE"></script>
+  <!-- Deferred Google tag (gtag.js) for non-blocking initial paint -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-F6XZ0SL3WE');
+    window.addEventListener('load', function() {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(initAnalytics);
+      } else {
+        setTimeout(initAnalytics, 2000);
+      }
+    });
+    function initAnalytics() {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-F6XZ0SL3WE';
+      document.head.appendChild(script);
+      gtag('js', new Date());
+      gtag('config', 'G-F6XZ0SL3WE');
+    }
   </script>
 </head>
 
@@ -82,4 +97,4 @@
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
-</html>
+</html>

@@ -1,9 +1,14 @@
-/* ⚡ Performance: Use font-display swap to prevent FOUT */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Performance: Prevent layout shifts & optimize text rendering */
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 
 @layer base {
   :root {

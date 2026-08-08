@@ -1,259 +1,121 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Zap, ShieldCheck, Sparkles, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { motion, type Variants } from "framer-motion";
 import heroImg from "@/assets/hero-retail.jpg";
 
-const staggerContainer: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const fadeUp: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 60,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
-
-const scaleIn: Variants = {
-  hidden: {
-    opacity: 0,
-    scale: 0.95,
-  },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
-
-// ⚡ Performance: Use only transform animations (will-change hints added)
-const floatingParticle: Variants = {
-  animate: {
-    y: [0, -80, 0],
-    x: [0, 25, 0],
-    opacity: [0.3, 0.8, 0.3],
-    transition: {
-      duration: 6,
-      repeat: Infinity,
-      ease: "easeInOut",
-    },
-  },
-};
-
 const Hero = () => (
-  <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-    {/* Background image - reduced scale animation for performance */}
-    <motion.div
-      className="absolute inset-[-10%]"
-      animate={{
-        scale: [1, 1.03, 1],
-      }}
-      transition={{
-        duration: 25,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-      style={{ willChange: "transform" }}
-    >
+  <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-24 pb-16">
+    {/* Optimized Background Image Layer */}
+    <div className="absolute inset-0 z-0 pointer-events-none">
       <img
         src={heroImg}
-        alt="Futuristic queue-free retail store"
-        className="w-full h-full object-cover opacity-[0.07]"
+        alt="Futuristic queue-free retail environment"
+        className="w-full h-full object-cover opacity-10 filter contrast-125 select-none"
         decoding="async"
         loading="eager"
         fetchPriority="high"
         sizes="100vw"
-        style={{ contentVisibility: "auto" }}
       />
-    </motion.div>
-
-    {/* Main glow orb - simplified motion */}
-    <motion.div
-      className="absolute w-[500px] h-[500px] rounded-full glow-bg pointer-events-none"
-      animate={{
-        x: ["-50%", "-40%", "-50%"],
-        y: ["-50%", "-55%", "-50%"],
-        opacity: [0.25, 0.45, 0.25],
-      }}
-      transition={{
-        duration: 12,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-      style={{
-        top: "50%",
-        left: "50%",
-        willChange: "transform, opacity",
-      }}
-    />
-
-    {/* Secondary glow orb */}
-    <motion.div
-      className="absolute w-[350px] h-[350px] rounded-full bg-primary/8 pointer-events-none blur-3xl"
-      animate={{
-        x: [0, 40, 0],
-        y: [0, -30, 0],
-        opacity: [0.12, 0.3, 0.12],
-      }}
-      transition={{
-        duration: 16,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: 2,
-      }}
-      style={{
-        top: "30%",
-        left: "20%",
-        willChange: "transform, opacity",
-      }}
-    />
-
-    {/* Tertiary glow orb */}
-    <motion.div
-      className="absolute w-[280px] h-[280px] rounded-full bg-primary/6 pointer-events-none blur-3xl"
-      animate={{
-        x: [0, -30, 0],
-        y: [0, 30, 0],
-        opacity: [0.08, 0.25, 0.08],
-      }}
-      transition={{
-        duration: 14,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: 4,
-      }}
-      style={{
-        bottom: "20%",
-        right: "15%",
-        willChange: "transform, opacity",
-      }}
-    />
-
-    {/* Floating particles - only 3 instead of 6 for performance */}
-    {[...Array(3)].map((_, i) => (
-      <motion.div
-        key={i}
-        className="absolute w-1 h-1 rounded-full bg-primary/30 pointer-events-none"
-        style={{
-          top: `${20 + i * 24}%`,
-          left: `${10 + i * 30}%`,
-          willChange: "transform, opacity",
-        }}
-        variants={floatingParticle}
-        animate="animate"
-        transition={{
-          duration: 5 + i * 0.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: i * 0.8,
-        }}
-      />
-    ))}
-
-    <div className="section-container relative z-10 text-center max-w-4xl mx-auto">
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Badge - simplified animation */}
-        <motion.div variants={scaleIn}>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-secondary mb-8">
-            <span className="px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-xs font-semibold">
-              New
-            </span>
-            <span className="text-sm text-muted-foreground">Queue-Free Retail Technology</span>
-          </div>
-        </motion.div>
-
-        {/* Heading */}
-        <motion.h1
-          variants={fadeUp}
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold font-heading leading-[1.05] mb-6 text-balance"
-        >
-          Why Wait in Queues?<br />
-          <span className="inline-block bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
-            Just #Dequeue.
-          </span>
-        </motion.h1>
-
-        {/* Subtext */}
-        <motion.p
-          variants={fadeUp}
-          className="text-lg text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed"
-        >
-          Dequeue builds the infrastructure that eliminates checkout lines forever. Four customizable products. One mission. Scan. Pay. Go.
-        </motion.p>
-
-        {/* Buttons */}
-        <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-4">
-          <motion.div
-            whileHover={{
-              scale: 1.03,
-              transition: { type: "spring", damping: 25, stiffness: 400 },
-            }}
-            whileTap={{
-              scale: 0.98,
-              transition: { type: "spring", damping: 25, stiffness: 400 },
-            }}
-            className="rounded-lg"
-            style={{ willChange: "transform" }}
-          >
-            <Button variant="hero" size="lg" asChild>
-              <Link to="/contact">
-                Get in touch
-                <ArrowRight className="w-4 h-4 ml-1" />
-              </Link>
-            </Button>
-          </motion.div>
-          <motion.div
-            whileHover={{
-              scale: 1.03,
-              transition: { type: "spring", damping: 25, stiffness: 400 },
-            }}
-            whileTap={{
-              scale: 0.98,
-              transition: { type: "spring", damping: 25, stiffness: 400 },
-            }}
-            style={{ willChange: "transform" }}
-          >
-            <Button variant="heroOutline" size="lg" asChild>
-              <Link to="/products">View products</Link>
-            </Button>
-          </motion.div>
-        </motion.div>
-      </motion.div>
-
-      {/* Bottom trust line */}
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
-        className="mt-20 text-sm text-muted-foreground"
-      >
-        Skip the queue. <span className="text-primary font-heading font-semibold">#Dequeue</span> — Engineered for modern retail.
-      </motion.p>
+      <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
     </div>
 
-    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+    {/* GPU Accelerated Ambient Light Orbs */}
+    <div
+      className="absolute w-[600px] h-[600px] rounded-full bg-primary/15 blur-[120px] pointer-events-none -top-20 -left-20 animate-pulse-glow"
+      style={{ willChange: "opacity, transform" }}
+    />
+    <div
+      className="absolute w-[500px] h-[500px] rounded-full bg-blue-500/10 blur-[100px] pointer-events-none -bottom-20 -right-20 animate-pulse"
+      style={{ animationDuration: "8s", willChange: "opacity" }}
+    />
+
+    <div className="section-container relative z-10 text-center max-w-4xl mx-auto px-4">
+      {/* Interactive Status Badge */}
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md mb-8 hover:border-primary/60 transition-all cursor-pointer group">
+        <span className="flex h-2 w-2 rounded-full bg-primary animate-ping" />
+        <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+          Frictionless Retail OS
+        </span>
+        <span className="text-xs text-muted-foreground hidden sm:inline">|</span>
+        <span className="text-xs text-foreground/90 font-medium hidden sm:inline-flex items-center gap-1 group-hover:text-primary transition-colors">
+          Scan. Pay. Go.
+          <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+        </span>
+      </div>
+
+      {/* Main Headline */}
+      <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-heading leading-[1.08] tracking-tight mb-6 text-balance">
+        Why Wait in Queues?
+        <br />
+        <span className="bg-gradient-to-r from-primary via-blue-400 to-teal-300 bg-clip-text text-transparent drop-shadow-sm">
+          Just #Dequeue.
+        </span>
+      </h1>
+
+      {/* Subtext */}
+      <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed text-balance">
+        Dequeue builds the zero-line infrastructure powering mobile checkouts, smart carts, touchless restaurant ordering, and autonomous dark stores.
+      </p>
+
+      {/* Primary Actions */}
+      <div className="flex flex-wrap justify-center items-center gap-4 mb-16">
+        <Button
+          variant="hero"
+          size="lg"
+          className="h-12 px-8 text-base shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+          asChild
+        >
+          <Link to="/contact" className="flex items-center gap-2">
+            Get Started Now
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </Button>
+        <Button
+          variant="heroOutline"
+          size="lg"
+          className="h-12 px-8 text-base backdrop-blur-sm border-primary/20 hover:border-primary/50 hover:bg-primary/5 hover:-translate-y-0.5 transition-all duration-200"
+          asChild
+        >
+          <Link to="/products">Explore Solutions</Link>
+        </Button>
+      </div>
+
+      {/* Feature Micro-Badges */}
+      <div className="pt-8 border-t border-border/40 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto text-left">
+        <div className="flex items-start gap-3 p-3 rounded-xl bg-card/40 backdrop-blur-sm border border-border/30">
+          <div className="p-2 rounded-lg bg-primary/10 text-primary">
+            <Zap className="w-4 h-4" />
+          </div>
+          <div>
+            <div className="text-xs font-semibold text-foreground">Instant Checkout</div>
+            <div className="text-[11px] text-muted-foreground">&lt; 0.2s item scan processing</div>
+          </div>
+        </div>
+
+        <div className="flex items-start gap-3 p-3 rounded-xl bg-card/40 backdrop-blur-sm border border-border/30">
+          <div className="p-2 rounded-lg bg-primary/10 text-primary">
+            <ShieldCheck className="w-4 h-4" />
+          </div>
+          <div>
+            <div className="text-xs font-semibold text-foreground">Zero Terminal Cost</div>
+            <div className="text-[11px] text-muted-foreground">Works on any mobile device</div>
+          </div>
+        </div>
+
+        <div className="col-span-2 md:col-span-1 flex items-start gap-3 p-3 rounded-xl bg-card/40 backdrop-blur-sm border border-border/30">
+          <div className="p-2 rounded-lg bg-primary/10 text-primary">
+            <Sparkles className="w-4 h-4" />
+          </div>
+          <div>
+            <div className="text-xs font-semibold text-foreground">Seamless POS Sync</div>
+            <div className="text-[11px] text-muted-foreground">Plug &amp; play integration</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Bottom Gradient Overlay */}
+    <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
   </section>
 );
 
