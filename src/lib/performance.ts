@@ -8,29 +8,7 @@
  * Based on user interaction patterns
  */
 export const prefetchRoutes = () => {
-  if (typeof window === "undefined") return;
-
-  // Common routes to prefetch after initial load
-  const routesToPrefetch = [
-    "/products",
-    "/pricing",
-    "/contact",
-    "/about",
-  ];
-
-  // Wait for initial page load before prefetching
-  if ("requestIdleCallback" in window) {
-    requestIdleCallback(() => {
-      routesToPrefetch.forEach((route) => {
-        const link = document.createElement("link");
-        link.rel = "prefetch";
-        link.as = "fetch";
-        link.href = route;
-        link.crossOrigin = "anonymous";
-        document.head.appendChild(link);
-      });
-    });
-  }
+  // Routes are code-split cleanly via React.lazy and loaded on demand by React Router.
 };
 
 /**
