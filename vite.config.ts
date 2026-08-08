@@ -19,7 +19,6 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    // Minification settings
     minify: "terser",
     terserOptions: {
       compress: {
@@ -31,56 +30,8 @@ export default defineConfig(({ mode }) => ({
         comments: false,
       },
     },
-    rollupOptions: {
-      output: {
-        // Manual chunk splitting for optimal caching and fast load
-        manualChunks: (id) => {
-          // Vendor chunks
-          if (id.includes("node_modules")) {
-            // Keep React, React DOM, Scheduler, and React Router together
-            if (
-              id.includes("/node_modules/react/") ||
-              id.includes("/node_modules/react-dom/") ||
-              id.includes("/node_modules/scheduler/") ||
-              id.includes("/node_modules/react-router/") ||
-              id.includes("/node_modules/react-router-dom/")
-            ) {
-              return "react-vendor";
-            }
-            if (id.includes("framer-motion")) {
-              return "framer-motion";
-            }
-            if (id.includes("@radix-ui")) {
-              return "radix-ui";
-            }
-            if (id.includes("recharts")) {
-              return "recharts";
-            }
-            if (id.includes("embla-carousel")) {
-              return "embla-carousel";
-            }
-            if (id.includes("react-day-picker") || id.includes("date-fns")) {
-              return "date-libs";
-            }
-            if (id.includes("@tsparticles")) {
-              return "tsparticles";
-            }
-            if (id.includes("@tanstack/react-query")) {
-              return "react-query";
-            }
-            return "vendors";
-          }
-        },
-        // ⚡ Compress JS chunks
-        chunkFileNames: "assets/[name]-[hash:8].js",
-        entryFileNames: "assets/[name]-[hash:8].js",
-      },
-    },
-    // ⚡ Optimize chunk size
-    reportCompressedSize: false,
-    chunkSizeWarningLimit: 500,
-    
-    // ⚡ CSS optimization
+    chunkSizeWarningLimit: 1000,
     cssCodeSplit: true,
   },
 }));
+
